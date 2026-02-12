@@ -19,7 +19,7 @@ export default function Home() {
             Last Picked
           </a>
           , a product company where I use AI to learn, build, and iterate on
-          ideas. I&apos;m also a Sr. Manager of Product Design at{" "}
+          ideas. I&apos;m also a Sr. Manager of Product Design at {" "}
           <a
             href="https://www.shopmonkey.io/"
             target="_blank"
