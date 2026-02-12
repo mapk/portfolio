@@ -19,7 +19,7 @@ export default function Home() {
             Last Picked
           </a>
           , a product company where I use AI to learn, build, and iterate on
-          ideas. I&apos;m also a Sr. Manager of Product Design at {" "}
+          ideas. I&apos;m also a Sr. Manager of Product Design at{" "}
           <a
             href="https://www.shopmonkey.io/"
             target="_blank"
@@ -161,6 +161,20 @@ export default function Home() {
               <br />
               <span className="text-zinc-400">
                 Follow a timeline leading to the promised Messiah.
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://codepen.io/mapk/full/VwKeqeB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={EXTERNAL_LINK_CLASS}
+            >
+              בריתות
+              <br />
+              <span className="text-zinc-400">
+                Review various covenant details throughout history.
               </span>
             </a>
           </li>
