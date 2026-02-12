@@ -59,7 +59,7 @@ export default function Home() {
           >
             Eat Your Greens
           </a>{" "}
-          for tracking food nutrients by color, and{" "}
+          for tracking food nutrition by color, and{" "}
           <a
             href="https://worduponword.app/"
             target="_blank"
