@@ -1,13 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const DOT_SIZE = 12;
+
+type PlacedDot = { x: number; y: number };
 
 export default function NameWithBlob() {
   const [isFollowing, setIsFollowing] = useState(false);
   const [isHoveringName, setIsHoveringName] = useState(false);
+  const [placedDots, setPlacedDots] = useState<PlacedDot[]>([]);
+  const placeholderRef = useRef<HTMLButtonElement>(null);
+  const clickCountRef = useRef(0);
+
+  const handleDotActivate = useCallback(() => {
+    if (isFollowing) return;
+    const formats: { src: string; type: string }[] = [
+      { src: "/audio/audio-1.mp3", type: "audio/mpeg" },
+      { src: "/audio/audio-1.wav", type: "audio/wav" },
+      { src: "/audio/audio-1.ogg", type: "audio/ogg" },
+    ];
+
+    const tryPlay = (index: number) => {
+      if (index >= formats.length) return;
+      const { src, type } = formats[index];
+      const audio = new Audio();
+      audio.volume = 1;
+      audio.addEventListener("error", () => tryPlay(index + 1));
+      audio.addEventListener("canplay", () => {
+        audio.play().catch(() => tryPlay(index + 1));
+      });
+      audio.src = src;
+      audio.load();
+    };
+    tryPlay(0);
+  }, [isFollowing]);
 
   const handleDotClick = useCallback(() => {
     if (isFollowing) return;
@@ -17,6 +46,8 @@ export default function NameWithBlob() {
   const handlePlaceholderClick = useCallback(() => {
     if (isFollowing) {
       setIsFollowing(false);
+      setPlacedDots([]);
+      clickCountRef.current = 0;
     }
   }, [isFollowing]);
 
@@ -63,15 +94,88 @@ export default function NameWithBlob() {
     };
   }, [isFollowing]);
 
+  const playAudio = useCallback((filename: string) => {
+    const base = filename.replace(/\.[^.]+$/, "");
+    const formats: { src: string; type: string }[] = [
+      { src: `/audio/${base}.mp3`, type: "audio/mpeg" },
+      { src: `/audio/${base}.wav`, type: "audio/wav" },
+      { src: `/audio/${base}.ogg`, type: "audio/ogg" },
+    ];
+
+    const tryPlay = (index: number) => {
+      if (index >= formats.length) return;
+      const { src } = formats[index];
+      const audio = new Audio();
+      audio.volume = 1;
+      audio.addEventListener("error", () => tryPlay(index + 1));
+      audio.addEventListener("canplay", () => {
+        audio.play().catch(() => tryPlay(index + 1));
+      });
+      audio.src = src;
+      audio.load();
+    };
+    tryPlay(0);
+  }, []);
+
+  useEffect(() => {
+    if (!isFollowing) return;
+
+    const handleDocumentClick = (e: MouseEvent) => {
+      if (placeholderRef.current?.contains(e.target as Node)) return;
+      clickCountRef.current += 1;
+      const count = clickCountRef.current;
+      if (count === 5) playAudio("audio-2.mp3");
+      else if (count === 20) playAudio("audio-3.mp3");
+      setPlacedDots((prev) => [...prev, { x: e.clientX, y: e.clientY }]);
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+    return () => document.removeEventListener("click", handleDocumentClick);
+  }, [isFollowing, playAudio]);
+
   const showPlaceholder = isFollowing && isHoveringName;
   const slotWidth = isFollowing ? (showPlaceholder ? DOT_SIZE + 12 : 0) : DOT_SIZE + 12;
 
+  const dotsOverlay =
+    placedDots.length > 0 &&
+    typeof document !== "undefined" &&
+    createPortal(
+      <div
+        className="pointer-events-none fixed inset-0 z-50"
+        aria-hidden
+      >
+        {placedDots.map((dot, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              left: dot.x - DOT_SIZE / 2,
+              top: dot.y - DOT_SIZE / 2,
+              width: DOT_SIZE,
+              height: DOT_SIZE,
+            }}
+          >
+            <Image
+              src="/blob.png"
+              alt=""
+              width={DOT_SIZE}
+              height={DOT_SIZE}
+              className="size-3"
+            />
+          </div>
+        ))}
+      </div>,
+      document.body
+    );
+
   return (
-    <h1
-      className={`mb-8 flex items-center text-lg font-medium tracking-tight uppercase text-white transition-all duration-300 ease-out sm:text-xl ${slotWidth === 0 ? "gap-0" : "gap-3"}`}
-      onMouseEnter={handleNameMouseEnter}
-      onMouseLeave={handleNameMouseLeave}
-    >
+    <>
+      {dotsOverlay}
+      <h1
+        className={`mb-8 flex items-center text-lg font-medium tracking-tight uppercase text-white transition-all duration-300 ease-out sm:text-xl ${slotWidth === 0 ? "gap-0" : "gap-3"}`}
+        onMouseEnter={handleNameMouseEnter}
+        onMouseLeave={handleNameMouseLeave}
+      >
       <div
         className="flex shrink-0 items-center justify-center overflow-hidden transition-all duration-300 ease-out"
         style={{ width: slotWidth, minWidth: slotWidth }}
@@ -79,6 +183,8 @@ export default function NameWithBlob() {
         {!isFollowing ? (
           <button
             type="button"
+            onMouseDown={handleDotActivate}
+            onTouchStart={handleDotActivate}
             onClick={handleDotClick}
             className="cursor-pointer touch-manipulation select-none"
             aria-label="Use blob as cursor"
@@ -93,6 +199,7 @@ export default function NameWithBlob() {
           </button>
         ) : showPlaceholder ? (
           <button
+            ref={placeholderRef}
             type="button"
             onClick={handlePlaceholderClick}
             className="flex cursor-pointer items-center justify-center touch-manipulation select-none"
@@ -117,5 +224,6 @@ export default function NameWithBlob() {
         Mark Uraine
       </span>
     </h1>
+    </>
   );
 }
