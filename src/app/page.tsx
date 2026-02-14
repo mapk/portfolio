@@ -4,7 +4,7 @@ const EXTERNAL_LINK_CLASS = "text-white transition-colors hover:text-[#EEFF0D]";
 
 export default function Home() {
   return (
-    <main className="max-w-2xl py-24 pl-24">
+    <main className="max-w-2xl py-24 pl-4 pr-4 sm:pl-8 sm:pr-8 md:pl-24 md:pr-24">
       <div className="animate-fade-in-up">
         <NameWithBlob />
 
