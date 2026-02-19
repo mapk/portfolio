@@ -18,9 +18,9 @@ export default function NameWithBlob() {
   const handleDotActivate = useCallback(() => {
     if (isFollowing) return;
     const formats: { src: string; type: string }[] = [
-      { src: "/audio/audio-1.mp3", type: "audio/mpeg" },
-      { src: "/audio/audio-1.wav", type: "audio/wav" },
-      { src: "/audio/audio-1.ogg", type: "audio/ogg" },
+      { src: "/audio/11-uh-oh-whoah.mp3", type: "audio/mpeg" },
+      { src: "/audio/11-uh-oh-whoah.wav", type: "audio/wav" },
+      { src: "/audio/11-uh-oh-whoah.ogg", type: "audio/ogg" },
     ];
 
     const tryPlay = (index: number) => {
@@ -43,13 +43,37 @@ export default function NameWithBlob() {
     setIsFollowing(true);
   }, [isFollowing]);
 
+  const playAudio = useCallback((filename: string) => {
+    const base = filename.replace(/\.[^.]+$/, "");
+    const formats: { src: string; type: string }[] = [
+      { src: `/audio/${base}.mp3`, type: "audio/mpeg" },
+      { src: `/audio/${base}.wav`, type: "audio/wav" },
+      { src: `/audio/${base}.ogg`, type: "audio/ogg" },
+    ];
+
+    const tryPlay = (index: number) => {
+      if (index >= formats.length) return;
+      const { src } = formats[index];
+      const audio = new Audio();
+      audio.volume = 1;
+      audio.addEventListener("error", () => tryPlay(index + 1));
+      audio.addEventListener("canplay", () => {
+        audio.play().catch(() => tryPlay(index + 1));
+      });
+      audio.src = src;
+      audio.load();
+    };
+    tryPlay(0);
+  }, []);
+
   const handlePlaceholderClick = useCallback(() => {
     if (isFollowing) {
+      playAudio("11-uh-thankyou.mp3");
       setIsFollowing(false);
       setPlacedDots([]);
       clickCountRef.current = 0;
     }
-  }, [isFollowing]);
+  }, [isFollowing, playAudio]);
 
   const handleNameMouseEnter = useCallback(() => {
     if (isFollowing) {
@@ -94,29 +118,6 @@ export default function NameWithBlob() {
     };
   }, [isFollowing]);
 
-  const playAudio = useCallback((filename: string) => {
-    const base = filename.replace(/\.[^.]+$/, "");
-    const formats: { src: string; type: string }[] = [
-      { src: `/audio/${base}.mp3`, type: "audio/mpeg" },
-      { src: `/audio/${base}.wav`, type: "audio/wav" },
-      { src: `/audio/${base}.ogg`, type: "audio/ogg" },
-    ];
-
-    const tryPlay = (index: number) => {
-      if (index >= formats.length) return;
-      const { src } = formats[index];
-      const audio = new Audio();
-      audio.volume = 1;
-      audio.addEventListener("error", () => tryPlay(index + 1));
-      audio.addEventListener("canplay", () => {
-        audio.play().catch(() => tryPlay(index + 1));
-      });
-      audio.src = src;
-      audio.load();
-    };
-    tryPlay(0);
-  }, []);
-
   useEffect(() => {
     if (!isFollowing) return;
 
@@ -124,8 +125,8 @@ export default function NameWithBlob() {
       if (placeholderRef.current?.contains(e.target as Node)) return;
       clickCountRef.current += 1;
       const count = clickCountRef.current;
-      if (count === 5) playAudio("audio-2.mp3");
-      else if (count === 20) playAudio("audio-3.mp3");
+      if (count === 5) playAudio("11-um-wow.mp3");
+      else if (count === 15) playAudio("11-oh-dang.mp3");
       setPlacedDots((prev) => [...prev, { x: e.clientX, y: e.clientY }]);
     };
 
