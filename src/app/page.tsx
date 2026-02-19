@@ -4,7 +4,7 @@ const EXTERNAL_LINK_CLASS = "text-white transition-colors hover:text-[#EEFF0D]";
 
 export default function Home() {
   return (
-    <main className="max-w-2xl py-24 pl-4 pr-4 sm:pl-8 sm:pr-8 md:pl-24 md:pr-24">
+    <main className="relative z-10 max-w-2xl py-24 pl-4 pr-4 sm:pl-8 sm:pr-8 md:pl-24 md:pr-24">
       <div className="animate-fade-in-up">
         <NameWithBlob />
 
@@ -184,7 +184,7 @@ export default function Home() {
       <section className="mt-12 animate-fade-in-up animate-fade-in-up-delay-2">
         <h2 className="mb-6 text-sm uppercase text-zinc-400">Talks</h2>
         <ul className="space-y-1 text-sm">
-          <li>2023: ECHOS Design Leadership Firesession</li>
+          <li className="talks-first-item">2023: ECHOS Design Leadership Firesession</li>
           <li>
             <a
               href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"

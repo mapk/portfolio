@@ -41,13 +41,13 @@
     transform: rotate(0deg) scale(1);
   }
   25% {
-    transform: rotate(90deg) scale(1.15);
+    transform: rotate(90deg) scale(1.2);
   }
   50% {
-    transform: rotate(180deg) scale(0.9);
+    transform: rotate(180deg) scale(0.85);
   }
   75% {
-    transform: rotate(270deg) scale(1.15);
+    transform: rotate(270deg) scale(1.2);
   }
   100% {
     transform: rotate(360deg) scale(1);
@@ -56,4 +56,32 @@
 
 .animate-wiggle {
   animation: wiggle 6s linear infinite;
+}
+
+@keyframes expand-from-point {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-expand-from-point {
+  animation: expand-from-point 0.8s ease-out forwards;
+}
+
+/* Yellow background mode: only white and link text get darker */
+.yellow-bg-active .text-white {
+  color: #18181b !important;
+}
+.yellow-bg-active .text-zinc-400,
+.yellow-bg-active .talks-first-item {
+  color: #71717a !important;
+}
+.yellow-bg-active a {
+  color: #18181b !important;
+}
+.yellow-bg-active a:hover {
+  color: #0a0a0b !important;
 }

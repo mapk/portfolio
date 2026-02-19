@@ -12,6 +12,7 @@ export default function NameWithBlob() {
   const [isFollowing, setIsFollowing] = useState(false);
   const [isHoveringName, setIsHoveringName] = useState(false);
   const [placedDots, setPlacedDots] = useState<PlacedDot[]>([]);
+  const [yellowOrigin, setYellowOrigin] = useState<{ x: number; y: number } | null>(null);
   const placeholderRef = useRef<HTMLButtonElement>(null);
   const clickCountRef = useRef(0);
 
@@ -71,6 +72,7 @@ export default function NameWithBlob() {
       playAudio("11-uh-thankyou.mp3");
       setIsFollowing(false);
       setPlacedDots([]);
+      setYellowOrigin(null);
       clickCountRef.current = 0;
     }
   }, [isFollowing, playAudio]);
@@ -86,6 +88,13 @@ export default function NameWithBlob() {
   }, []);
 
   useEffect(() => {
+    if (yellowOrigin) {
+      document.body.classList.add("yellow-bg-active");
+      return () => document.body.classList.remove("yellow-bg-active");
+    }
+  }, [yellowOrigin]);
+
+  useEffect(() => {
     if (!isFollowing) return;
 
     const styleId = "blob-cursor-style";
@@ -99,6 +108,12 @@ export default function NameWithBlob() {
       }
       styleEl.textContent = `html, body, html * { cursor: url("${dataUrl}") 8 8, auto !important; }`;
     };
+
+    if (yellowOrigin) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="#18181b"/></svg>`;
+      applyCursor(`data:image/svg+xml,${encodeURIComponent(svg)}`);
+      return () => document.getElementById(styleId)?.remove();
+    }
 
     fetch("/blob-cursor.png")
       .then((res) => res.blob())
@@ -116,7 +131,7 @@ export default function NameWithBlob() {
     return () => {
       document.getElementById(styleId)?.remove();
     };
-  }, [isFollowing]);
+  }, [isFollowing, yellowOrigin]);
 
   useEffect(() => {
     if (!isFollowing) return;
@@ -126,7 +141,10 @@ export default function NameWithBlob() {
       clickCountRef.current += 1;
       const count = clickCountRef.current;
       if (count === 5) playAudio("11-um-wow.mp3");
-      else if (count === 15) playAudio("11-oh-dang.mp3");
+      else if (count === 15) {
+        playAudio("11-oh-dang.mp3");
+        setYellowOrigin({ x: e.clientX, y: e.clientY });
+      }
       setPlacedDots((prev) => [...prev, { x: e.clientX, y: e.clientY }]);
     };
 
@@ -136,6 +154,27 @@ export default function NameWithBlob() {
 
   const showPlaceholder = isFollowing && isHoveringName;
   const slotWidth = isFollowing ? (showPlaceholder ? DOT_SIZE + 12 : 0) : DOT_SIZE + 12;
+
+  const yellowOverlay =
+    yellowOrigin &&
+    typeof document !== "undefined" &&
+    createPortal(
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        aria-hidden
+      >
+        <div
+          className="absolute animate-expand-from-point rounded-full bg-[#EEFF0D]"
+          style={{
+            left: yellowOrigin.x,
+            top: yellowOrigin.y,
+            width: "200vmax",
+            height: "200vmax",
+          }}
+        />
+      </div>,
+      document.body
+    );
 
   const dotsOverlay =
     placedDots.length > 0 &&
@@ -171,6 +210,7 @@ export default function NameWithBlob() {
 
   return (
     <>
+      {yellowOverlay}
       {dotsOverlay}
       <h1
         className={`mb-8 flex items-center text-lg font-medium tracking-tight uppercase text-white transition-all duration-300 ease-out sm:text-xl ${slotWidth === 0 ? "gap-0" : "gap-3"}`}
