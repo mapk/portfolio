@@ -18,8 +18,8 @@ export default function Home() {
           >
             Last Picked
           </a>
-          , a product company where I use AI to learn, build, and iterate on
-          ideas. I&apos;m also a Sr. Manager of Product Design at{" "}
+          , a product company using AI to learn, build, and iterate on ideas.
+          I&apos;m also a Sr. Manager of Product Design at{" "}
           <a
             href="https://www.shopmonkey.io/"
             target="_blank"
@@ -27,8 +27,18 @@ export default function Home() {
             className={EXTERNAL_LINK_CLASS}
           >
             Shopmonkey
-          </a>
-          . Previously, I led design teams at{" "}
+          </a>{" "}
+          where I&apos;ve integrated AI prototyping into our design process and
+          built{" "}
+          <a
+            href="https://shopmonkey-playground.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={EXTERNAL_LINK_CLASS}
+          >
+            Shopmonkey Playground
+          </a>{" "}
+          to share customers. Previously, I led design teams at{" "}
           <a
             href="https://automattic.com/"
             target="_blank"
@@ -69,7 +79,7 @@ export default function Home() {
             Word Upon Word
           </a>{" "}
           to help English speakers learn Russian while reading the Bible.
-          I&apos;ve also created a few{" "}
+          I&apos;ve also created several{" "}
           <a
             href="https://mapk.gumroad.com/"
             target="_blank"
@@ -78,16 +88,7 @@ export default function Home() {
           >
             typefaces
           </a>{" "}
-          and a{" "}
-          <a
-            href="https://www.figma.com/files/team/807785828270984885/resources/community/plugin/961268319224363191/sm-scaffold?fuid=951653566981120752"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={EXTERNAL_LINK_CLASS}
-          >
-            figma plugin
-          </a>
-          , along with authoring a few books.
+          along with authoring a few books.
         </p>
       </div>
 
@@ -184,7 +185,9 @@ export default function Home() {
       <section className="mt-12 animate-fade-in-up animate-fade-in-up-delay-2">
         <h2 className="mb-6 text-sm uppercase text-zinc-400">Talks</h2>
         <ul className="space-y-1 text-sm">
-          <li className="talks-first-item">2023: ECHOS Design Leadership Firesession</li>
+          <li className="talks-first-item">
+            2023: ECHOS Design Leadership Firesession
+          </li>
           <li>
             <a
               href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"
