@@ -38,7 +38,7 @@ export default function Home() {
           >
             Shopmonkey Playground
           </a>{" "}
-          to share customers. Previously, I led design teams at{" "}
+          to share with customers. Previously, I led design teams at{" "}
           <a
             href="https://automattic.com/"
             target="_blank"
