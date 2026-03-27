@@ -4,6 +4,25 @@
   --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
 }
 
+/* Text selection: yellow highlight, dark gray text (matches link hover accent) */
+::selection {
+  background-color: #eeff0d;
+  color: #27272a;
+}
+::-moz-selection {
+  background-color: #eeff0d;
+  color: #27272a;
+}
+
+.yellow-bg-active ::selection {
+  background-color: #27272a;
+  color: #eeff0d;
+}
+.yellow-bg-active ::-moz-selection {
+  background-color: #27272a;
+  color: #eeff0d;
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
