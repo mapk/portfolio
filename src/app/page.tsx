@@ -6,11 +6,11 @@ export default function Home() {
   return (
     <main className="baseline-grid relative z-10 min-h-screen max-w-5xl pl-4 pr-4 md:pl-12 md:pr-12">
       <div className="grid min-h-screen gap-0 lg:grid-cols-2">
-        <div className="w-full max-w-lg pb-0 pt-12 pr-0 lg:pb-12 lg:pr-12">
+        <div className="w-full max-w-lg pt-12 pr-0 lg:pr-12">
           <div className="animate-fade-in-up">
             <NameWithBlob />
 
-            <p className="mb-10 text-sm text-zinc-400">
+            <p className="mb-12 text-sm text-zinc-400">
               Founder of{" "}
               <a
                 href="https://lastpicked.com/"
@@ -98,21 +98,22 @@ export default function Home() {
           </section>
         </div>
 
-        <div className="mt-12 h-full w-full max-w-lg border-zinc-800 pb-12 pt-0 pl-0 lg:mt-0 lg:border-l lg:pl-12 lg:pt-12">
+        <div className="mt-12 w-full max-w-lg border-zinc-800 pl-0 lg:mt-0 lg:border-l lg:pl-12 lg:pt-12">
           <section className="animate-fade-in-up animate-fade-in-up-delay-2">
-            <h2 className="mb-6 flex h-6 items-center text-sm uppercase text-zinc-400">
+            <h2 className="mb-6 text-sm uppercase text-zinc-400">
               Projects
             </h2>
-            <ul className="space-y-5 text-sm">
+            <ul className="space-y-6 text-sm">
               <li>
                 <a
                   href="https://tolkovanye.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${EXTERNAL_LINK_CLASS} block`}
+                  className={EXTERNAL_LINK_CLASS}
                 >
-                  <span className="block h-5">Tолкование</span>
-                  <span className="block h-5 text-zinc-400">
+                  Tолкование
+                  <br />
+                  <span className="text-zinc-400">
                     Read insightful commentary on Bible verses.
                   </span>
                 </a>
@@ -122,10 +123,11 @@ export default function Home() {
                   href="https://worduponword.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${EXTERNAL_LINK_CLASS} block`}
+                  className={EXTERNAL_LINK_CLASS}
                 >
-                  <span className="block h-5">Word Upon Word</span>
-                  <span className="block h-5 text-zinc-400">
+                  Word Upon Word
+                  <br />
+                  <span className="text-zinc-400">
                     Learn Russian through comprehensible input.
                   </span>
                 </a>
@@ -135,10 +137,11 @@ export default function Home() {
                   href="https://eatyourgreens.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${EXTERNAL_LINK_CLASS} block`}
+                  className={EXTERNAL_LINK_CLASS}
                 >
-                  <span className="block h-5">Eat Your Greens</span>
-                  <span className="block h-5 text-zinc-400">
+                  Eat Your Greens
+                  <br />
+                  <span className="text-zinc-400">
                     Track food nutrients by color.
                   </span>
                 </a>
@@ -148,10 +151,11 @@ export default function Home() {
                   href="https://hewalkswith.us/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${EXTERNAL_LINK_CLASS} block`}
+                  className={EXTERNAL_LINK_CLASS}
                 >
-                  <span className="block h-5">He Walks With Us</span>
-                  <span className="block h-5 text-zinc-400">
+                  He Walks With Us
+                  <br />
+                  <span className="text-zinc-400">
                     Access books and articles with Hebraic context.
                   </span>
                 </a>
@@ -161,10 +165,11 @@ export default function Home() {
                   href="https://v0-yeshua-timeline.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${EXTERNAL_LINK_CLASS} block`}
+                  className={EXTERNAL_LINK_CLASS}
                 >
-                  <span className="block h-5">Yeshua&apos;s Purpose</span>
-                  <span className="block h-5 text-zinc-400">
+                  Yeshua&apos;s Purpose
+                  <br />
+                  <span className="text-zinc-400">
                     Follow a timeline about the promised Messiah.
                   </span>
                 </a>
@@ -174,10 +179,11 @@ export default function Home() {
                   href="https://codepen.io/mapk/full/VwKeqeB"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${EXTERNAL_LINK_CLASS} block`}
+                  className={EXTERNAL_LINK_CLASS}
                 >
-                  <span className="block h-5">בריתות</span>
-                  <span className="block h-5 text-zinc-400">
+                  בריתות
+                  <br />
+                  <span className="text-zinc-400">
                     Review covenant details throughout history.
                   </span>
                 </a>
@@ -187,10 +193,11 @@ export default function Home() {
                   href="https://mapk.gumroad.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${EXTERNAL_LINK_CLASS} block`}
+                  className={EXTERNAL_LINK_CLASS}
                 >
-                  <span className="block h-5">Typefaces</span>
-                  <span className="block h-5 text-zinc-400">
+                  Typefaces
+                  <br />
+                  <span className="text-zinc-400">
                     A few typefaces I designed for the masses.
                   </span>
                 </a>
@@ -198,8 +205,8 @@ export default function Home() {
             </ul>
           </section>
 
-          <section className="mt-12 animate-fade-in-up animate-fade-in-up-delay-3 lg:mt-12">
-            <h2 className="mb-6 flex h-6 items-center text-sm uppercase text-zinc-400">
+          <section className="mt-12 animate-fade-in-up animate-fade-in-up-delay-3">
+            <h2 className="mb-6 text-sm uppercase text-zinc-400">
               Talks
             </h2>
             <ul className="space-y-0 text-sm">
