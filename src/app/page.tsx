@@ -30,8 +30,7 @@ export default function Home() {
               >
                 Shopmonkey
               </a>{" "}
-              where I integrated AI prototyping into our design process and
-              built{" "}
+              where I integrated AI into our design process and built{" "}
               <a
                 href="https://shopmonkey-playground.vercel.app/"
                 target="_blank"
@@ -40,7 +39,8 @@ export default function Home() {
               >
                 Shopmonkey Playground
               </a>{" "}
-              to share with customers. Previously, I led design teams at{" "}
+              to share early prototypes with customers. Previously, I led design
+              teams at{" "}
               <a
                 href="https://automattic.com/"
                 target="_blank"
