@@ -109,11 +109,10 @@ export default function Home() {
                   href="https://tolkovanye.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
+                  className={`${EXTERNAL_LINK_CLASS} block`}
                 >
-                  Tолкование
-                  <br />
-                  <span className="text-zinc-400">
+                  <span className="block h-5">Tолкование</span>
+                  <span className="block h-5 text-zinc-400">
                     Read insightful commentary on Bible verses.
                   </span>
                 </a>
@@ -123,11 +122,10 @@ export default function Home() {
                   href="https://worduponword.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
+                  className={`${EXTERNAL_LINK_CLASS} block`}
                 >
-                  Word Upon Word
-                  <br />
-                  <span className="text-zinc-400">
+                  <span className="block h-5">Word Upon Word</span>
+                  <span className="block h-5 text-zinc-400">
                     Learn Russian through comprehensible input.
                   </span>
                 </a>
@@ -137,11 +135,10 @@ export default function Home() {
                   href="https://eatyourgreens.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
+                  className={`${EXTERNAL_LINK_CLASS} block`}
                 >
-                  Eat Your Greens
-                  <br />
-                  <span className="text-zinc-400">
+                  <span className="block h-5">Eat Your Greens</span>
+                  <span className="block h-5 text-zinc-400">
                     Track food nutrients by color.
                   </span>
                 </a>
@@ -151,11 +148,10 @@ export default function Home() {
                   href="https://hewalkswith.us/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
+                  className={`${EXTERNAL_LINK_CLASS} block`}
                 >
-                  He Walks With Us
-                  <br />
-                  <span className="text-zinc-400">
+                  <span className="block h-5">He Walks With Us</span>
+                  <span className="block h-5 text-zinc-400">
                     Access books and articles with Hebraic context.
                   </span>
                 </a>
@@ -165,11 +161,10 @@ export default function Home() {
                   href="https://v0-yeshua-timeline.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
+                  className={`${EXTERNAL_LINK_CLASS} block`}
                 >
-                  Yeshua&apos;s Purpose
-                  <br />
-                  <span className="text-zinc-400">
+                  <span className="block h-5">Yeshua&apos;s Purpose</span>
+                  <span className="block h-5 text-zinc-400">
                     Follow a timeline about the promised Messiah.
                   </span>
                 </a>
@@ -179,11 +174,10 @@ export default function Home() {
                   href="https://codepen.io/mapk/full/VwKeqeB"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
+                  className={`${EXTERNAL_LINK_CLASS} block`}
                 >
-                  בריתות
-                  <br />
-                  <span className="text-zinc-400">
+                  <span className="block h-5">בריתות</span>
+                  <span className="block h-5 text-zinc-400">
                     Review covenant details throughout history.
                   </span>
                 </a>
@@ -193,11 +187,10 @@ export default function Home() {
                   href="https://mapk.gumroad.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
+                  className={`${EXTERNAL_LINK_CLASS} block`}
                 >
-                  Typefaces
-                  <br />
-                  <span className="text-zinc-400">
+                  <span className="block h-5">Typefaces</span>
+                  <span className="block h-5 text-zinc-400">
                     A few typefaces I designed for the masses.
                   </span>
                 </a>
