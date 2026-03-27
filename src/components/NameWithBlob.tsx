@@ -213,7 +213,7 @@ export default function NameWithBlob() {
       {yellowOverlay}
       {dotsOverlay}
       <h1
-        className={`mb-8 flex items-center text-lg font-medium tracking-tight uppercase text-white transition-all duration-300 ease-out sm:text-xl ${slotWidth === 0 ? "gap-0" : "gap-3"}`}
+        className={`mb-6 flex h-6 items-center text-lg leading-6 font-medium tracking-tight uppercase text-white transition-all duration-300 ease-out sm:text-xl sm:leading-6 ${slotWidth === 0 ? "gap-0" : "gap-3"}`}
         onMouseEnter={handleNameMouseEnter}
         onMouseLeave={handleNameMouseLeave}
       >
