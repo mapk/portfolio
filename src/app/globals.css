@@ -85,3 +85,17 @@
 .yellow-bg-active a:hover {
   color: #0a0a0b !important;
 }
+
+/* Shared baseline rhythm for cross-column line alignment */
+.baseline-grid {
+  --baseline: 1.5rem;
+}
+
+.baseline-grid .text-sm,
+.baseline-grid p,
+.baseline-grid li,
+.baseline-grid a,
+.baseline-grid span,
+.baseline-grid h2 {
+  line-height: var(--baseline);
+}
