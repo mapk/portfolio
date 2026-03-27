@@ -100,9 +100,7 @@ export default function Home() {
 
         <div className="mt-12 w-full max-w-lg border-zinc-800 pl-0 lg:mt-0 lg:border-l lg:pl-12 lg:pt-12">
           <section className="animate-fade-in-up animate-fade-in-up-delay-2">
-            <h2 className="mb-6 text-sm uppercase text-zinc-400">
-              Projects
-            </h2>
+            <h2 className="mb-6 text-sm uppercase text-zinc-400">Projects</h2>
             <ul className="space-y-6 text-sm">
               <li>
                 <a
@@ -206,13 +204,12 @@ export default function Home() {
           </section>
 
           <section className="mt-12 animate-fade-in-up animate-fade-in-up-delay-3">
-            <h2 className="mb-6 text-sm uppercase text-zinc-400">
-              Talks
-            </h2>
+            <h2 className="mb-6 text-sm uppercase text-zinc-400">Talks</h2>
             <ul className="space-y-0 text-sm">
-              <li className="talks-first-item">
-                2023: ECHOS Design Leadership Firesession
-              </li>
+              <li>2025: The Influence of Language on Worldviews</li>
+              <li>2024: Too Much Function, Not Enough Form</li>
+              <li>2023: You say potato, I say GHOUGHPHTHEIGHTTEEAU</li>
+              <li>2023: ECHOS Design Leadership Firesession</li>
               <li>
                 <a
                   href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"
