@@ -5,8 +5,8 @@ const EXTERNAL_LINK_CLASS = "text-white transition-colors hover:text-[#EEFF0D]";
 export default function Home() {
   return (
     <main className="baseline-grid relative z-10 min-h-screen max-w-5xl pl-4 pr-4 md:pl-12 md:pr-12">
-      <div className="grid min-h-screen gap-0 lg:grid-cols-2">
-        <div className="w-full max-w-lg pt-12 pr-0 lg:pr-12">
+      <div className="portfolio-grid grid min-h-screen gap-0">
+        <div className="portfolio-col-left w-full min-w-0 pt-12">
           <div className="animate-fade-in-up">
             <NameWithBlob />
 
@@ -98,7 +98,7 @@ export default function Home() {
           </section>
         </div>
 
-        <div className="mt-12 w-full max-w-lg border-zinc-800 pl-0 lg:mt-0 lg:border-l lg:pl-12 lg:pt-12">
+        <div className="portfolio-col-right w-full min-w-0 pb-12">
           <section className="animate-fade-in-up animate-fade-in-up-delay-2">
             <h2 className="mb-6 text-sm uppercase text-zinc-400">Projects</h2>
             <ul className="space-y-6 text-sm">

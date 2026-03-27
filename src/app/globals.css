@@ -118,3 +118,33 @@
 .baseline-grid h2 {
   line-height: var(--baseline);
 }
+
+/* Fluid two-column layout: columns shrink until min width, then stack */
+.portfolio-grid {
+  --col-min: 18rem;
+  container-type: inline-size;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--col-min)), 1fr)
+  );
+}
+
+/* Stacked: space before projects column */
+.portfolio-grid > .portfolio-col-right {
+  margin-top: 3rem;
+}
+
+/* Two columns fit at 2× min track; 36rem = 2×18rem (avoids var() in @container queries) */
+@container (min-width: 36rem) {
+  .portfolio-grid > .portfolio-col-left {
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .portfolio-grid > .portfolio-col-right {
+    margin-top: 0;
+    padding-top: 3rem;
+    padding-left: 3rem;
+    border-left: 1px solid #27272a;
+  }
+}
