@@ -1,7 +1,5 @@
 import NameWithBlob from "@/components/NameWithBlob";
 
-const EXTERNAL_LINK_CLASS = "text-white transition-colors hover:text-[#EEFF0D]";
-
 export default function Home() {
   return (
     <main className="baseline-grid relative z-10 min-h-screen max-w-5xl pl-4 pr-4 md:pl-12 md:pr-12">
@@ -10,13 +8,12 @@ export default function Home() {
           <div className="animate-fade-in-up">
             <NameWithBlob />
 
-            <p className="mb-12 text-sm text-zinc-400">
+            <p className="mb-12 text-sm">
               Founder of{" "}
               <a
                 href="https://lastpicked.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={EXTERNAL_LINK_CLASS}
               >
                 Last Picked
               </a>
@@ -26,7 +23,6 @@ export default function Home() {
                 href="https://www.shopmonkey.io/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={EXTERNAL_LINK_CLASS}
               >
                 Shopmonkey
               </a>{" "}
@@ -35,7 +31,6 @@ export default function Home() {
                 href="https://shopmonkey-playground.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={EXTERNAL_LINK_CLASS}
               >
                 Shopmonkey Playground
               </a>{" "}
@@ -45,7 +40,6 @@ export default function Home() {
                 href="https://automattic.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={EXTERNAL_LINK_CLASS}
               >
                 Automattic
               </a>{" "}
@@ -54,7 +48,6 @@ export default function Home() {
                 href="https://wordpress.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={EXTERNAL_LINK_CLASS}
               >
                 WordPress
               </a>
@@ -69,7 +62,6 @@ export default function Home() {
                   href="https://www.linkedin.com/in/uraine/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   LinkedIn
                 </a>
@@ -79,7 +71,6 @@ export default function Home() {
                   href="https://github.com/mapk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   Github
                 </a>
@@ -89,7 +80,6 @@ export default function Home() {
                   href="https://adplist.org/mentors/mark-uraine"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   ADPList
                 </a>
@@ -100,20 +90,17 @@ export default function Home() {
 
         <div className="portfolio-col-right w-full min-w-0 pb-12">
           <section className="animate-fade-in-up animate-fade-in-up-delay-2">
-            <h2 className="mb-6 text-sm uppercase text-zinc-400">Projects</h2>
+            <h2 className="mb-6 text-sm uppercase">Projects</h2>
             <ul className="space-y-6 text-sm">
               <li>
                 <a
                   href="https://tolkovanye.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   Tолкование
                   <br />
-                  <span className="text-zinc-400">
-                    Read insightful commentary on Bible verses.
-                  </span>
+                  <span>Read insightful commentary on Bible verses.</span>
                 </a>
               </li>
               <li>
@@ -121,13 +108,10 @@ export default function Home() {
                   href="https://worduponword.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   Word Upon Word
                   <br />
-                  <span className="text-zinc-400">
-                    Learn Russian through comprehensible input.
-                  </span>
+                  <span>Learn Russian through comprehensible input.</span>
                 </a>
               </li>
               <li>
@@ -135,13 +119,10 @@ export default function Home() {
                   href="https://eatyourgreens.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   Eat Your Greens
                   <br />
-                  <span className="text-zinc-400">
-                    Track food nutrients by color.
-                  </span>
+                  <span>Track food nutrients by color.</span>
                 </a>
               </li>
               <li>
@@ -149,13 +130,10 @@ export default function Home() {
                   href="https://hewalkswith.us/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   He Walks With Us
                   <br />
-                  <span className="text-zinc-400">
-                    Access books and articles with Hebraic context.
-                  </span>
+                  <span>Access books and articles with Hebraic context.</span>
                 </a>
               </li>
               <li>
@@ -163,13 +141,10 @@ export default function Home() {
                   href="https://v0-yeshua-timeline.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   Yeshua&apos;s Purpose
                   <br />
-                  <span className="text-zinc-400">
-                    Follow a timeline about the promised Messiah.
-                  </span>
+                  <span>Follow a timeline about the promised Messiah.</span>
                 </a>
               </li>
               <li>
@@ -177,13 +152,10 @@ export default function Home() {
                   href="https://codepen.io/mapk/full/VwKeqeB"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   בריתות
                   <br />
-                  <span className="text-zinc-400">
-                    Review covenant details throughout history.
-                  </span>
+                  <span>Review covenant details throughout history.</span>
                 </a>
               </li>
               <li>
@@ -191,20 +163,17 @@ export default function Home() {
                   href="https://mapk.gumroad.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   Typefaces
                   <br />
-                  <span className="text-zinc-400">
-                    A few typefaces I designed for the masses.
-                  </span>
+                  <span>A few typefaces I designed for the masses.</span>
                 </a>
               </li>
             </ul>
           </section>
 
           <section className="mt-12 animate-fade-in-up animate-fade-in-up-delay-3">
-            <h2 className="mb-6 text-sm uppercase text-zinc-400">Talks</h2>
+            <h2 className="mb-6 text-sm uppercase">Talks</h2>
             <ul className="space-y-0 text-sm">
               <li>2025: The Influence of Language on Worldviews</li>
               <li>2024: Too Much Function, Not Enough Form</li>
@@ -215,7 +184,6 @@ export default function Home() {
                   href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2020: Disrupting Innovation
                 </a>
@@ -225,7 +193,6 @@ export default function Home() {
                   href="https://www.youtube.com/watch?v=8R8x7Oj9f5w"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2019: Disrupting Innovation
                 </a>
@@ -235,7 +202,6 @@ export default function Home() {
                   href="https://wordpress.tv/2019/09/08/mark-uraine-designing-in-the-open-remotely/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2019: Designing in the Open, Remotely
                 </a>
@@ -245,7 +211,6 @@ export default function Home() {
                   href="https://wordpress.tv/2019/09/05/panel-growing-beyond-gutenberg-from-block-based-editing-to-site-administration/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2019: Panel Discussions: Growing Beyond Gutenberg
                 </a>
@@ -255,7 +220,6 @@ export default function Home() {
                   href="https://wordpress.tv/2018/08/17/mark-uraine-designing-with-the-api-p1-of-3/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2018: Designing with the API
                 </a>
@@ -265,7 +229,6 @@ export default function Home() {
                   href="https://europe.wordcamp.org/2017/session/workshop-visual-data-using-the-wordpress-api/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2017: Visual Data Using the WordPress API
                 </a>
@@ -275,7 +238,6 @@ export default function Home() {
                   href="https://speakerdeck.com/mapk/visual-data-plus-computational-design"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2017: Visual Data + Computational Design
                 </a>
@@ -285,7 +247,6 @@ export default function Home() {
                   href="https://wordpress.tv/2017/05/09/mark-uraine-designing-in-the-open/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2017: Designing in the Open
                 </a>
@@ -295,7 +256,6 @@ export default function Home() {
                   href="https://wordpress.tv/2016/10/08/mark-uraine-design-for-telepathy/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2016: Design for Telepathy
                 </a>
@@ -305,7 +265,6 @@ export default function Home() {
                   href="https://wordpress.tv/2016/06/06/mark-uraine-design-thinking-thinking-like-a-designer/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={EXTERNAL_LINK_CLASS}
                 >
                   2016: Design Thinking
                 </a>
