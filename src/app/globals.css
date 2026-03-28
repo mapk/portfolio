@@ -135,7 +135,6 @@ body a > span {
 /* Fluid two-column layout: columns shrink until min width, then stack */
 .portfolio-grid {
   --col-min: 18rem;
-  container-type: inline-size;
   grid-template-columns: repeat(
     auto-fit,
     minmax(min(100%, var(--col-min)), 1fr)
@@ -147,22 +146,7 @@ body a > span {
   margin-top: 3rem;
 }
 
-/* Two columns fit at 2× min track; 36rem = 2×18rem (avoids var() in @container queries) */
-@container (min-width: 36rem) {
-  .portfolio-grid > .portfolio-col-left {
-    padding-right: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .portfolio-grid > .portfolio-col-right {
-    margin-top: 0;
-    padding-top: 3rem;
-    padding-left: 3rem;
-    border-left: 1px solid #27272a;
-  }
-}
-
-/* Independent column scrolling when side-by-side */
+/* Two columns side-by-side: gutters, border, independent scroll */
 @media (min-width: 36rem) {
   .baseline-grid {
     height: 100svh;
@@ -173,8 +157,18 @@ body a > span {
     height: 100%;
   }
 
-  .portfolio-grid > .portfolio-col-left,
+  .portfolio-grid > .portfolio-col-left {
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
   .portfolio-grid > .portfolio-col-right {
+    margin-top: 0;
+    padding-top: 3rem;
+    padding-left: 3rem;
+    border-left: 1px solid #27272a;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
