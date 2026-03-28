@@ -166,7 +166,7 @@ export default function Home() {
                 >
                   Typefaces
                   <br />
-                  <span>A few typefaces I designed for the masses.</span>
+                  <span>Check out a few typefaces I designed.</span>
                 </a>
               </li>
             </ul>
