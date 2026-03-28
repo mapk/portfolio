@@ -148,3 +148,37 @@
     border-left: 1px solid #27272a;
   }
 }
+
+/* Independent column scrolling when side-by-side */
+@media (min-width: 36rem) {
+  .baseline-grid {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  .portfolio-grid {
+    height: 100%;
+  }
+
+  .portfolio-grid > .portfolio-col-left,
+  .portfolio-grid > .portfolio-col-right {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* Force-hide scrollbars on all browsers including macOS overlay scrollbars */
+.portfolio-col-left,
+.portfolio-col-right {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.portfolio-col-left::-webkit-scrollbar,
+.portfolio-col-right::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  background: transparent !important;
+  -webkit-appearance: none !important;
+}
