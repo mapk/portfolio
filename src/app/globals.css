@@ -5,16 +5,16 @@
 }
 
 /* Links default to white with yellow hover; spans inside links revert to body color */
-a {
+body a {
   color: #fff;
   transition: color 0.15s;
 }
 
-a:hover {
+body a:hover {
   color: #eeff0d;
 }
 
-a > span {
+body a > span {
   color: #a1a1aa;
 }
 
