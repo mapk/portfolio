@@ -1,7 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
+  --font-mono: var(--font-berkeley-mono), var(--font-roboto-mono), ui-monospace, monospace;
+}
+
+/* Links default to white with yellow hover; spans inside links revert to body color */
+a {
+  color: #fff;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: #eeff0d;
+}
+
+a > span {
+  color: #a1a1aa;
 }
 
 /* Text selection: yellow highlight, dark gray text (matches link hover accent) */
@@ -90,13 +104,12 @@
   animation: expand-from-point 0.8s ease-out forwards;
 }
 
-/* Yellow background mode: only white and link text get darker */
+/* Yellow background mode: darken all text */
+.yellow-bg-active {
+  color: #71717a !important;
+}
 .yellow-bg-active .text-white {
   color: #18181b !important;
-}
-.yellow-bg-active .text-zinc-400,
-.yellow-bg-active .talks-first-item {
-  color: #71717a !important;
 }
 .yellow-bg-active a {
   color: #18181b !important;
