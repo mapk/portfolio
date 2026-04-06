@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center px-6 text-center">
+    <main className="max-w-5xl pl-4 pr-4 pt-12 md:pl-12 md:pr-12">
       <h1 className="mb-4 text-2xl font-medium tracking-tight text-white sm:text-3xl">
         404
       </h1>
@@ -11,7 +11,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="text-zinc-400 underline underline-offset-4 transition-colors hover:text-white focus:text-white focus:outline-none"
+        className="text-zinc-400 transition-colors hover:text-white focus:text-white focus:outline-none"
       >
         Back to home
       </Link>
