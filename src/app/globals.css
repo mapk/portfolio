@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-mono: var(--font-berkeley-mono), var(--font-roboto-mono), ui-monospace, monospace;
+  --font-mono:
+    var(--font-berkeley-mono), var(--font-roboto-mono), ui-monospace, monospace;
 }
 
 /* Links default to white with yellow hover; spans inside links revert to body color */
