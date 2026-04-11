@@ -135,10 +135,18 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
       }}
       className="flex flex-col gap-4"
     >
-      <PixelatedImage
-        src={project.screenshot}
-        alt={`Screenshot of ${project.title}`}
-      />
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Visit ${project.title}`}
+        tabIndex={0}
+      >
+        <PixelatedImage
+          src={project.screenshot}
+          alt={`Screenshot of ${project.title}`}
+        />
+      </a>
 
       <motion.p
         initial={{ opacity: 0, y: 6 }}
