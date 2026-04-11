@@ -177,13 +177,15 @@ body a > span {
 
 /* Force-hide scrollbars on all browsers including macOS overlay scrollbars */
 .portfolio-col-left,
-.portfolio-col-right {
+.portfolio-col-right,
+.preview-overlay-panel {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 
 .portfolio-col-left::-webkit-scrollbar,
-.portfolio-col-right::-webkit-scrollbar {
+.portfolio-col-right::-webkit-scrollbar,
+.preview-overlay-panel::-webkit-scrollbar {
   width: 0 !important;
   height: 0 !important;
   display: none !important;
