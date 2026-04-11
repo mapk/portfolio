@@ -6,10 +6,26 @@ import "./globals.css";
 
 const berkeleyMono = localFont({
   src: [
-    { path: "../../public/fonts/BerkeleyMono-Regular.woff2", weight: "400", style: "normal" },
-    { path: "../../public/fonts/BerkeleyMono-Bold.woff2", weight: "700", style: "normal" },
-    { path: "../../public/fonts/BerkeleyMono-Oblique.woff2", weight: "400", style: "italic" },
-    { path: "../../public/fonts/BerkeleyMono-Bold-Oblique.woff2", weight: "700", style: "italic" },
+    {
+      path: "../../public/fonts/BerkeleyMono-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BerkeleyMono-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BerkeleyMono-Oblique.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/BerkeleyMono-Bold-Oblique.woff2",
+      weight: "700",
+      style: "italic",
+    },
   ],
   variable: "--font-berkeley-mono",
   display: "swap",
@@ -35,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${berkeleyMono.variable} ${robotoMono.variable} font-mono antialiased bg-zinc-900 text-zinc-400`}
+        className={`${berkeleyMono.variable} ${robotoMono.variable} font-mono antialiased bg-zinc-950 text-zinc-400`}
       >
         {children}
         <Analytics />
