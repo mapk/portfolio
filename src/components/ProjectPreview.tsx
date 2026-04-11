@@ -102,10 +102,10 @@ const PixelatedImage = ({ src, alt }: { src: string; alt: string }) => {
   }, [imageLoaded, runPixelationSequence]);
 
   return (
-    <div className="relative w-[1280px] max-w-none overflow-hidden rounded-[4px] border border-[#27272A]">
+    <div className="relative w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px] border border-[#27272A]">
       <canvas
         ref={canvasRef}
-        className="block w-[1280px] h-auto"
+        className="block w-full h-auto"
         style={{ imageRendering: "pixelated" }}
         aria-hidden="true"
       />
@@ -113,7 +113,7 @@ const PixelatedImage = ({ src, alt }: { src: string; alt: string }) => {
       <motion.img
         src={src}
         alt={alt}
-        className="absolute inset-0 block w-[1280px] h-auto"
+        className="absolute inset-0 block w-full h-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: pixelationComplete ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
