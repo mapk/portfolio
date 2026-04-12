@@ -102,7 +102,7 @@ const PixelatedImage = ({ src, alt }: { src: string; alt: string }) => {
   }, [imageLoaded, runPixelationSequence]);
 
   return (
-    <div className="relative w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px] border border-[#27272A]">
+    <div className="relative w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px] border border-[#1f1f23]">
       <canvas
         ref={canvasRef}
         className="block w-full h-auto"

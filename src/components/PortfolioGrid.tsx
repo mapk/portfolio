@@ -222,7 +222,11 @@ const PortfolioGrid = () => {
                       tabIndex={0}
                     >
                       <span
-                        className={project.id === "tolkovanye" ? "text-xs leading-[var(--baseline)]" : ""}
+                        className={
+                          project.id === "tolkovanye"
+                            ? "text-xs leading-[var(--baseline)]"
+                            : ""
+                        }
                       >
                         {project.title}
                       </span>
@@ -368,7 +372,7 @@ const PortfolioGrid = () => {
 
             <motion.div
               ref={panelRef}
-              className="preview-overlay-panel pointer-events-auto relative z-10 flex h-full w-[min(90vw,810px)] lg:w-[calc(100vw-64rem)] flex-col overflow-y-auto overflow-x-clip bg-zinc-950 border-l border-[#27272A] p-6 pt-12 lg:pl-12 lg:pr-0"
+              className="preview-overlay-panel pointer-events-auto relative z-10 flex h-full w-[min(90vw,810px)] lg:w-[calc(100vw-64rem)] flex-col overflow-y-auto overflow-x-clip bg-zinc-950 border-l border-[#1f1f23] p-6 pt-12 lg:pl-12 lg:pr-0"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}

@@ -22,19 +22,19 @@ body a > span {
 /* Text selection: yellow highlight, dark gray text (matches link hover accent) */
 ::selection {
   background-color: #eeff0d;
-  color: #27272a;
+  color: #1f1f23;
 }
 ::-moz-selection {
   background-color: #eeff0d;
-  color: #27272a;
+  color: #1f1f23;
 }
 
 .yellow-bg-active ::selection {
-  background-color: #27272a;
+  background-color: #1f1f23;
   color: #eeff0d;
 }
 .yellow-bg-active ::-moz-selection {
-  background-color: #27272a;
+  background-color: #1f1f23;
   color: #eeff0d;
 }
 
@@ -169,7 +169,7 @@ body a > span {
     margin-top: 0;
     padding-top: 3rem;
     padding-left: 3rem;
-    border-left: 1px solid #27272a;
+    border-left: 1px solid #1f1f23;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
