@@ -222,7 +222,7 @@ const PortfolioGrid = () => {
                       tabIndex={0}
                     >
                       <span
-                        className={project.id === "tolkovanye" ? "text-xs" : ""}
+                        className={project.id === "tolkovanye" ? "text-xs leading-[var(--baseline)]" : ""}
                       >
                         {project.title}
                       </span>
