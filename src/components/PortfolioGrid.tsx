@@ -14,7 +14,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "A commentary platform for Bible chapters, offering deeper insights into Scripture through the perspective of the original Hebrew authors.",
     url: "https://tolkovanye.netlify.app/",
-    screenshot: "/screenshots/tolkovanye.png",
+    screenshot: "/screenshots/tolkovanye.jpg",
   },
   {
     id: "word-upon-word",
@@ -23,7 +23,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "An interactive language learning app that teaches Russian through comprehensible input, with inline word definitions and pronunciation guides.",
     url: "https://worduponword.app/",
-    screenshot: "/screenshots/word.png",
+    screenshot: "/screenshots/word-mobile.jpg",
   },
   {
     id: "eat-your-greens",
@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "A nutrition tracking app that encourages a balanced diet by categorizing food by color for a more intuitive approach to healthy eating.",
     url: "https://eatyourgreens.app/",
-    screenshot: "/screenshots/greens.png",
+    screenshot: "/screenshots/greens-mobile.jpg",
   },
   {
     id: "he-walks-with-us",
@@ -41,7 +41,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "A publishing platform committed to producing literary works that align our understanding of the Word of God with the Hebrew authors.",
     url: "https://hewalkswith.us/",
-    screenshot: "/screenshots/hewalks.png",
+    screenshot: "/screenshots/hewalks.jpg",
   },
   {
     id: "yeshuas-purpose",
@@ -50,7 +50,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "A narrative biblical timeline exploring the purpose of Yeshua as the Messiah who reunites a divided kingdom.",
     url: "https://v0-yeshua-timeline.vercel.app/",
-    screenshot: "/screenshots/yeshua.png",
+    screenshot: "/screenshots/yeshua.jpg",
   },
   {
     id: "covenants",
@@ -59,7 +59,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "An interactive visualization mapping the covenants throughout biblical history, showing how they build upon each other.",
     url: "https://codepen.io/mapk/full/VwKeqeB",
-    screenshot: "/screenshots/covenants.png",
+    screenshot: "/screenshots/covenants.jpg",
   },
   {
     id: "typefaces",
@@ -68,7 +68,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "A collection of custom-designed typefaces exploring geometric forms and modular letter construction.",
     url: "https://mapk.gumroad.com/",
-    screenshot: "/screenshots/type.png",
+    screenshot: "/screenshots/type.jpg",
   },
 ];
 
