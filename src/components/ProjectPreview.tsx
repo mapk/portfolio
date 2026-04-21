@@ -63,11 +63,11 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.55 }}
-        className="inline-flex items-center gap-1 text-sm text-white hover:text-[#eeff0d] transition-colors w-fit pl-3"
+        className="external-link inline-flex items-center gap-1 text-sm text-white hover:text-[#eeff0d] transition-colors w-fit pl-3"
         aria-label={`Visit ${project.title}`}
         tabIndex={0}
       >
-        Visit {project.title} &rarr;
+        Visit {project.title}
       </motion.a>
     </motion.div>
   );
