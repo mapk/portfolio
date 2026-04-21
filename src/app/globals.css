@@ -15,6 +15,38 @@ body a:hover {
   color: #eeff0d;
 }
 
+/* Outbound links: reveal trailing arrow on hover/focus */
+body a.external-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+body a.external-link::after {
+  content: "↗";
+  font-size: 1.14em;
+  line-height: 1;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 0;
+  flex-shrink: 0;
+  transform: translateX(-2px);
+  transition:
+    width 0.15s ease,
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    margin-left 0.15s ease;
+}
+
+body a.external-link:hover::after,
+body a.external-link:focus-visible::after {
+  width: 1.12em;
+  opacity: 1;
+  margin-left: 0.35em;
+  transform: translateX(0);
+}
+
 body a > span {
   color: #a1a1aa;
 }

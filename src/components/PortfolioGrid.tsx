@@ -173,6 +173,7 @@ const PortfolioGrid = () => {
                   href="https://www.linkedin.com/in/uraine/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   LinkedIn
                 </a>
@@ -182,6 +183,7 @@ const PortfolioGrid = () => {
                   href="https://github.com/mapk"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   Github
                 </a>
@@ -191,6 +193,7 @@ const PortfolioGrid = () => {
                   href="https://adplist.org/mentors/mark-uraine"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   ADPList
                 </a>
@@ -257,6 +260,7 @@ const PortfolioGrid = () => {
                   href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2020: Disrupting Innovation
                 </a>
@@ -266,6 +270,7 @@ const PortfolioGrid = () => {
                   href="https://www.youtube.com/watch?v=8R8x7Oj9f5w"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2019: Disrupting Innovation
                 </a>
@@ -275,6 +280,7 @@ const PortfolioGrid = () => {
                   href="https://wordpress.tv/2019/09/08/mark-uraine-designing-in-the-open-remotely/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2019: Designing in the Open, Remotely
                 </a>
@@ -284,8 +290,9 @@ const PortfolioGrid = () => {
                   href="https://wordpress.tv/2019/09/05/panel-growing-beyond-gutenberg-from-block-based-editing-to-site-administration/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
-                  2019: Panel Discussions: Growing Beyond Gutenberg
+                  2019: Panelist: Growing Beyond Gutenberg
                 </a>
               </li>
               <li>
@@ -293,6 +300,7 @@ const PortfolioGrid = () => {
                   href="https://wordpress.tv/2018/08/17/mark-uraine-designing-with-the-api-p1-of-3/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2018: Designing with the API
                 </a>
@@ -302,6 +310,7 @@ const PortfolioGrid = () => {
                   href="https://europe.wordcamp.org/2017/session/workshop-visual-data-using-the-wordpress-api/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2017: Visual Data Using the WordPress API
                 </a>
@@ -311,6 +320,7 @@ const PortfolioGrid = () => {
                   href="https://speakerdeck.com/mapk/visual-data-plus-computational-design"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2017: Visual Data + Computational Design
                 </a>
@@ -320,6 +330,7 @@ const PortfolioGrid = () => {
                   href="https://wordpress.tv/2017/05/09/mark-uraine-designing-in-the-open/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2017: Designing in the Open
                 </a>
@@ -329,6 +340,7 @@ const PortfolioGrid = () => {
                   href="https://wordpress.tv/2016/10/08/mark-uraine-design-for-telepathy/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2016: Design for Telepathy
                 </a>
@@ -338,6 +350,7 @@ const PortfolioGrid = () => {
                   href="https://wordpress.tv/2016/06/06/mark-uraine-design-thinking-thinking-like-a-designer/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="external-link"
                 >
                   2016: Design Thinking
                 </a>
