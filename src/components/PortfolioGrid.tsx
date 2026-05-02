@@ -35,15 +35,6 @@ const PROJECTS: Project[] = [
     screenshot: "/screenshots/greens-mobile.jpg",
   },
   {
-    id: "he-walks-with-us",
-    title: "He Walks With Us",
-    listDescription: "Access books and articles with Hebraic context.",
-    previewDescription:
-      "A publishing platform committed to producing literary works that align our understanding of the Word of God with the Hebrew authors.",
-    url: "https://hewalkswith.us/",
-    screenshot: "/screenshots/hewalks.jpg",
-  },
-  {
     id: "yeshuas-purpose",
     title: "Yeshua\u2019s Purpose",
     listDescription: "Follow a timeline about the promised Messiah.",
