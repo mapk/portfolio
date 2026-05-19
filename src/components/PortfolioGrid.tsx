@@ -14,7 +14,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "Getting early product feedback from real users is difficult. Planning time with customers that already have busy schedules often leads to no-shows, rescheduling, and time lost. Reactions helps get early feature designs in front of users from within your product.",
     url: "https://getreactions.app/",
-    screenshot: "/screenshots/reactions-dark.jpg",
+    screenshot: "/screenshots/reactions.png",
   },
   {
     id: "tolkovanye",
