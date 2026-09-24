@@ -47,28 +47,24 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
         </div>
       </a>
 
-      <motion.p
-        initial={{ opacity: 0, y: 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.45, ease: "easeOut" }}
-        className="max-w-[416px] text-sm leading-relaxed text-zinc-400 pl-3"
+      <p
+        className="glitch-in max-w-[416px] text-sm leading-relaxed text-zinc-400 pl-3"
+        style={{ animationDelay: "0.45s" }}
       >
         {project.previewDescription}
-      </motion.p>
+      </p>
 
-      <motion.a
+      <a
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.55 }}
-        className="external-link inline-flex items-center gap-1 text-sm text-white hover:text-[#eeff0d] transition-colors w-fit pl-3"
+        style={{ animationDelay: "0.5s" }}
+        className="glitch-in external-link inline-flex items-center gap-1 text-sm text-white hover:text-[#eeff0d] transition-colors w-fit pl-3"
         aria-label={`Visit ${project.title}`}
         tabIndex={0}
       >
         Visit {project.title}
-      </motion.a>
+      </a>
     </motion.div>
   );
 };

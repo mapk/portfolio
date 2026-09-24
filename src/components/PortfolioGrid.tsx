@@ -1,12 +1,22 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import NameWithBlob from "@/components/NameWithBlob";
 import ProjectPreview from "@/components/ProjectPreview";
 import type { Project } from "@/components/ProjectPreview";
 
 const PROJECTS: Project[] = [
+  {
+    id: "data-backed-design",
+    title: "Data Backed Design",
+    listDescription: "Get evidence-backed answers to UI/UX questions.",
+    previewDescription:
+      "Ask a UI/UX or design-process question. Get one clear direction, the reasoning, cited evidence from named companies, and the tradeoffs.",
+    url: "https://databacked.design/",
+    screenshot: "/screenshots/databackeddesign.png",
+  },
   {
     id: "reactions",
     title: "Reactions",
@@ -111,15 +121,19 @@ const PortfolioGrid = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [selectedProjectId]);
 
+  // Each line gets the next slot in the load-in stagger, in document order.
+  let lineIndex = 0;
+  const nextLine = () => ({ "--i": lineIndex++ }) as CSSProperties;
+
   return (
     <>
       <div className="portfolio-grid grid min-h-screen gap-0">
         {/* Left Column — Bio & Links */}
         <div className="portfolio-col-left w-full min-w-0 pt-12">
-          <div className="animate-fade-in-up">
-            <NameWithBlob />
+          <div>
+            <NameWithBlob nameStyle={nextLine()} />
 
-            <p className="mb-12 text-sm">
+            <p className="glitch-in mb-12 text-sm" style={nextLine()}>
               Founder of{" "}
               <a
                 href="https://lastpicked.com/"
@@ -166,9 +180,9 @@ const PortfolioGrid = () => {
             </p>
           </div>
 
-          <section className="animate-fade-in-up animate-fade-in-up-delay-1">
+          <section>
             <ul className="space-y-0 text-sm">
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://www.linkedin.com/in/uraine/"
                   target="_blank"
@@ -178,7 +192,7 @@ const PortfolioGrid = () => {
                   LinkedIn
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://github.com/mapk"
                   target="_blank"
@@ -188,7 +202,7 @@ const PortfolioGrid = () => {
                   Github
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://adplist.org/mentors/mark-uraine"
                   target="_blank"
@@ -203,14 +217,19 @@ const PortfolioGrid = () => {
         </div>
 
         {/* Middle Column — Projects & Talks */}
-        <div className="portfolio-col-right w-full min-w-0 pb-12">
-          <section className="animate-fade-in-up animate-fade-in-up-delay-2">
-            <h2 className="mb-6 text-sm uppercase">Projects</h2>
+        <div
+          className="portfolio-col-right divider-in w-full min-w-0 pb-12"
+          style={nextLine()}
+        >
+          <section>
+            <h2 className="glitch-in mb-6 text-sm uppercase" style={nextLine()}>
+              Projects
+            </h2>
             <ul className="space-y-6 text-sm">
               {PROJECTS.map((project) => {
                 const isActive = selectedProjectId === project.id;
                 return (
-                  <li key={project.id}>
+                  <li key={project.id} className="glitch-in" style={nextLine()}>
                     <button
                       type="button"
                       data-project-button
@@ -248,14 +267,16 @@ const PortfolioGrid = () => {
             </ul>
           </section>
 
-          <section className="mt-12 animate-fade-in-up animate-fade-in-up-delay-3">
-            <h2 className="mb-6 text-sm uppercase">Talks</h2>
+          <section className="mt-12">
+            <h2 className="glitch-in mb-6 text-sm uppercase" style={nextLine()}>
+              Talks
+            </h2>
             <ul className="space-y-0 text-sm">
-              <li>2025: The Influence of Language on Worldviews</li>
-              <li>2024: Too Much Function, Not Enough Form</li>
-              <li>2023: You say potato, I say GHOUGHPHTHEIGHTTEEAU</li>
-              <li>2023: ECHOS Design Leadership Firesession</li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>2025: The Influence of Language on Worldviews</li>
+              <li className="glitch-in" style={nextLine()}>2024: Too Much Function, Not Enough Form</li>
+              <li className="glitch-in" style={nextLine()}>2023: You say potato, I say GHOUGHPHTHEIGHTTEEAU</li>
+              <li className="glitch-in" style={nextLine()}>2023: ECHOS Design Leadership Firesession</li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"
                   target="_blank"
@@ -265,7 +286,7 @@ const PortfolioGrid = () => {
                   2020: Disrupting Innovation
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://www.youtube.com/watch?v=8R8x7Oj9f5w"
                   target="_blank"
@@ -275,7 +296,7 @@ const PortfolioGrid = () => {
                   2019: Disrupting Innovation
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2019/09/08/mark-uraine-designing-in-the-open-remotely/"
                   target="_blank"
@@ -285,7 +306,7 @@ const PortfolioGrid = () => {
                   2019: Designing in the Open, Remotely
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2019/09/05/panel-growing-beyond-gutenberg-from-block-based-editing-to-site-administration/"
                   target="_blank"
@@ -295,7 +316,7 @@ const PortfolioGrid = () => {
                   2019: Panelist: Growing Beyond Gutenberg
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2018/08/17/mark-uraine-designing-with-the-api-p1-of-3/"
                   target="_blank"
@@ -305,7 +326,7 @@ const PortfolioGrid = () => {
                   2018: Designing with the API
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://europe.wordcamp.org/2017/session/workshop-visual-data-using-the-wordpress-api/"
                   target="_blank"
@@ -315,7 +336,7 @@ const PortfolioGrid = () => {
                   2017: Visual Data Using the WordPress API
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://speakerdeck.com/mapk/visual-data-plus-computational-design"
                   target="_blank"
@@ -325,7 +346,7 @@ const PortfolioGrid = () => {
                   2017: Visual Data + Computational Design
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2017/05/09/mark-uraine-designing-in-the-open/"
                   target="_blank"
@@ -335,7 +356,7 @@ const PortfolioGrid = () => {
                   2017: Designing in the Open
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2016/10/08/mark-uraine-design-for-telepathy/"
                   target="_blank"
@@ -345,7 +366,7 @@ const PortfolioGrid = () => {
                   2016: Design for Telepathy
                 </a>
               </li>
-              <li>
+              <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2016/06/06/mark-uraine-design-thinking-thinking-like-a-designer/"
                   target="_blank"
