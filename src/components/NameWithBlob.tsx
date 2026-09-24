@@ -3,12 +3,18 @@
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 
 const DOT_SIZE = 12;
 
 type PlacedDot = { x: number; y: number };
 
-export default function NameWithBlob() {
+type NameWithBlobProps = {
+  // Load-in stagger slot for the name; the dot stays visible from first paint.
+  nameStyle?: CSSProperties;
+};
+
+export default function NameWithBlob({ nameStyle }: NameWithBlobProps) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [isHoveringName, setIsHoveringName] = useState(false);
   const [placedDots, setPlacedDots] = useState<PlacedDot[]>([]);
@@ -218,7 +224,7 @@ export default function NameWithBlob() {
         onMouseLeave={handleNameMouseLeave}
       >
       <div
-        className="flex shrink-0 items-center justify-center overflow-hidden transition-all duration-300 ease-out"
+        className={`flex h-6 shrink-0 items-center justify-center transition-all duration-300 ease-out ${isFollowing ? "overflow-hidden" : "overflow-visible"}`}
         style={{ width: slotWidth, minWidth: slotWidth }}
       >
         {!isFollowing ? (
@@ -227,7 +233,7 @@ export default function NameWithBlob() {
             onMouseDown={handleDotActivate}
             onTouchStart={handleDotActivate}
             onClick={handleDotClick}
-            className="cursor-pointer touch-manipulation select-none"
+            className="animate-intro-pulse cursor-pointer touch-manipulation select-none"
             aria-label="Use blob as cursor"
           >
             <Image
@@ -261,7 +267,10 @@ export default function NameWithBlob() {
         )}
       </div>
 
-      <span className="transition-all duration-300 ease-out">
+      <span
+        className="glitch-in transition-all duration-300 ease-out"
+        style={nameStyle}
+      >
         Mark Uraine
       </span>
     </h1>

@@ -70,36 +70,114 @@ body a > span {
   color: #eeff0d;
 }
 
-@keyframes fade-in-up {
-  from {
+@keyframes glitch-in {
+  0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateX(-4px);
+    clip-path: inset(0 0 65% 0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(3px);
+    clip-path: inset(40% 0 15% 0);
+    text-shadow:
+      -2px 0 #eeff0d,
+      2px 0 #00e5ff;
+  }
+  40% {
+    opacity: 0.35;
+    transform: translateX(-2px);
+    clip-path: inset(10% 0 50% 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(1px);
+    clip-path: inset(55% 0 0 0);
+    text-shadow:
+      1px 0 #eeff0d,
+      -1px 0 #00e5ff;
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-1px);
+    clip-path: inset(0 0 0 0);
+    text-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    text-shadow: none;
+  }
+}
+
+/* The yellow dot shows alone for --intro-delay, then the content loads in. */
+:root {
+  --intro-delay: 2s;
+}
+
+/* Each line glitches in place; --i sets its position in the stagger. */
+.glitch-in {
+  animation: glitch-in 0.3s steps(1, end) both;
+  animation-delay: calc(var(--intro-delay) + var(--i, 0) * 30ms);
+}
+
+/* The column divider flickers on with the first line of its column. */
+@keyframes divider-in {
+  0% {
+    border-left-color: transparent;
+  }
+  20% {
+    border-left-color: #1f1f23;
+  }
+  40% {
+    border-left-color: transparent;
+  }
+  60%,
+  100% {
+    border-left-color: #1f1f23;
+  }
+}
+
+.divider-in {
+  animation: divider-in 0.3s steps(1, end) both;
+  animation-delay: calc(var(--intro-delay) + var(--i, 0) * 30ms);
+}
+
+@keyframes intro-pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: scale(3);
   }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.5s ease-out forwards;
+/* A translucent halo swells out from behind the dot and fades. */
+.animate-intro-pulse {
+  position: relative;
+  isolation: isolate;
+}
+
+.animate-intro-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  background: #eeff0d;
   opacity: 0;
+  animation: intro-pulse 0.8s ease-out 1.4s forwards;
 }
 
-.animate-fade-in-up-delay-1 {
-  animation-delay: 0.25s;
-}
-
-.animate-fade-in-up-delay-2 {
-  animation-delay: 0.5s;
-}
-
-.animate-fade-in-up-delay-3 {
-  animation-delay: 0.75s;
-}
-
-.animate-fade-in-up-delay-4 {
-  animation-delay: 0.5s;
+@media (prefers-reduced-motion: reduce) {
+  .glitch-in,
+  .divider-in,
+  .animate-intro-pulse::before {
+    animation: none;
+  }
 }
 
 @keyframes wiggle {
@@ -190,7 +268,11 @@ body a > span {
     height: 100%;
   }
 
+  /* Extra room on the left so the dot's intro pulse isn't clipped by the scroll area. */
   .portfolio-grid > .portfolio-col-left {
+    width: calc(100% + 1rem);
+    margin-left: -1rem;
+    padding-left: 1rem;
     padding-right: 3rem;
     padding-bottom: 3rem;
     overflow-y: auto;
