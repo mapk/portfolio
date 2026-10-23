@@ -133,7 +133,7 @@ const PortfolioGrid = () => {
           <div>
             <NameWithBlob nameStyle={nextLine()} />
 
-            <p className="glitch-in mb-12 text-sm" style={nextLine()}>
+            <p className="glitch-in mb-[calc(var(--baseline)*2)] text-sm" style={nextLine()}>
               Founder of{" "}
               <a
                 href="https://lastpicked.com/"
@@ -222,10 +222,10 @@ const PortfolioGrid = () => {
           style={nextLine()}
         >
           <section>
-            <h2 className="glitch-in mb-6 text-sm uppercase" style={nextLine()}>
+            <h2 className="glitch-in mb-[var(--baseline)] text-sm uppercase" style={nextLine()}>
               Projects
             </h2>
-            <ul className="space-y-6 text-sm">
+            <ul className="space-y-[var(--baseline)] text-sm">
               {PROJECTS.map((project) => {
                 const isActive = selectedProjectId === project.id;
                 return (
@@ -267,8 +267,8 @@ const PortfolioGrid = () => {
             </ul>
           </section>
 
-          <section className="mt-12">
-            <h2 className="glitch-in mb-6 text-sm uppercase" style={nextLine()}>
+          <section className="mt-[calc(var(--baseline)*2)]">
+            <h2 className="glitch-in mb-[var(--baseline)] text-sm uppercase" style={nextLine()}>
               Talks
             </h2>
             <ul className="space-y-0 text-sm">

@@ -219,12 +219,12 @@ export default function NameWithBlob({ nameStyle }: NameWithBlobProps) {
       {yellowOverlay}
       {dotsOverlay}
       <h1
-        className={`mb-6 flex items-center text-lg leading-6 font-medium tracking-tight uppercase text-white transition-all duration-300 ease-out sm:text-xl sm:leading-6 ${slotWidth === 0 ? "gap-0" : "gap-3"}`}
+        className={`mb-[var(--baseline)] flex items-center text-lg leading-[var(--baseline)] font-medium tracking-tight uppercase text-white transition-all duration-300 ease-out sm:text-xl ${slotWidth === 0 ? "gap-0" : "gap-3"}`}
         onMouseEnter={handleNameMouseEnter}
         onMouseLeave={handleNameMouseLeave}
       >
       <div
-        className={`flex h-6 shrink-0 items-center justify-center transition-all duration-300 ease-out ${isFollowing ? "overflow-hidden" : "overflow-visible"}`}
+        className={`flex h-[var(--baseline)] shrink-0 items-center justify-center transition-all duration-300 ease-out ${isFollowing ? "overflow-hidden" : "overflow-visible"}`}
         style={{ width: slotWidth, minWidth: slotWidth }}
       >
         {!isFollowing ? (

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
 type Project = {
@@ -16,6 +17,24 @@ type ProjectPreviewProps = {
 };
 
 const ProjectPreview = ({ project }: ProjectPreviewProps) => {
+  const shotRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [shotHeight, setShotHeight] = useState<number>();
+
+  // Round the screenshot's block up to whole baselines so the text below stays on the grid
+  useEffect(() => {
+    const shot = shotRef.current;
+    const text = textRef.current;
+    if (!shot || !text) return;
+    const observer = new ResizeObserver(() => {
+      const baseline = parseFloat(getComputedStyle(text).lineHeight);
+      const height = shot.offsetHeight;
+      setShotHeight(baseline ? Math.ceil(height / baseline) * baseline : height);
+    });
+    observer.observe(shot);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <motion.div
       key={project.id}
@@ -26,7 +45,7 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
         duration: 0.5,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-[var(--baseline)]"
     >
       <a
         href={project.url}
@@ -34,8 +53,12 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
         rel="noopener noreferrer"
         aria-label={`Visit ${project.title}`}
         tabIndex={0}
+        style={{ height: shotHeight }}
       >
-        <div className="w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px]">
+        <div
+          ref={shotRef}
+          className="w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px]"
+        >
           <motion.img
             src={project.screenshot}
             alt={`Screenshot of ${project.title}`}
@@ -48,7 +71,8 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
       </a>
 
       <p
-        className="glitch-in max-w-[416px] text-sm leading-relaxed text-zinc-400 pl-3"
+        ref={textRef}
+        className="glitch-in max-w-[416px] text-sm leading-[var(--baseline)] text-zinc-400 pl-3"
         style={{ animationDelay: "0.45s" }}
       >
         {project.previewDescription}
