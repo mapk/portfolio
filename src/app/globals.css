@@ -3,6 +3,20 @@
 @theme inline {
   --font-mono:
     var(--font-berkeley-mono), var(--font-roboto-mono), ui-monospace, monospace;
+
+  /* Type scale: each step 1px smaller than Tailwind's default */
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.1875rem;
+  --text-2xl: 1.4375rem;
+  --text-3xl: 1.8125rem;
+}
+
+/* Unsized text inherits 1px below the 16px browser default */
+body {
+  font-size: var(--text-base);
 }
 
 /* Links default to white with yellow hover; spans inside links revert to body color */
@@ -231,7 +245,7 @@ body a > span {
 
 /* Shared baseline rhythm for cross-column line alignment */
 .baseline-grid {
-  --baseline: 1.5rem;
+  --baseline: 1.25rem;
 }
 
 .baseline-grid .text-sm,
@@ -241,6 +255,20 @@ body a > span {
 .baseline-grid span,
 .baseline-grid h2 {
   line-height: var(--baseline);
+}
+
+/* Debug: faint baseline rules; drawn per column so they scroll with content */
+.show-grid .portfolio-col-left,
+.show-grid .portfolio-col-right,
+.show-grid .preview-overlay-panel {
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(var(--baseline) - 1px),
+    rgb(255 255 255 / 0.06) calc(var(--baseline) - 1px)
+  );
+  background-size: 100% var(--baseline);
+  background-position: 0 3rem;
+  background-attachment: local;
 }
 
 /* Fluid two-column layout: columns shrink until min width, then stack */
