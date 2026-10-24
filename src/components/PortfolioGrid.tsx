@@ -133,7 +133,10 @@ const PortfolioGrid = () => {
           <div>
             <NameWithBlob nameStyle={nextLine()} />
 
-            <p className="glitch-in mb-[calc(var(--baseline)*2)] text-sm" style={nextLine()}>
+            <p
+              className="glitch-in mb-[calc(var(--baseline)*2)] text-sm"
+              style={nextLine()}
+            >
               Founder of{" "}
               <a
                 href="https://lastpicked.com/"
@@ -142,8 +145,9 @@ const PortfolioGrid = () => {
               >
                 Last Picked
               </a>
-              , a product company using AI to learn, build, and iterate on
-              ideas. I&apos;m also a Sr. Manager of Product Design at{" "}
+              , where I build products that help product teams build
+              products.(╯°□°)╯ ┻━┻ I&apos;m also a Sr. Manager of Product Design
+              at{" "}
               <a
                 href="https://www.shopmonkey.io/"
                 target="_blank"
@@ -151,16 +155,17 @@ const PortfolioGrid = () => {
               >
                 Shopmonkey
               </a>{" "}
-              where I integrated AI into our design process and built{" "}
+              where I built{" "}
               <a
                 href="https://shopmonkey-playground.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Shopmonkey Playground
-              </a>{" "}
-              to share early prototypes with customers. Previously, I led design
-              teams at{" "}
+              </a>
+              , an AI vibe coding tool that allows us to share early prototypes
+              with customers, and makes the hand-off to development smooth and
+              seamless. Previously, I led design teams at{" "}
               <a
                 href="https://automattic.com/"
                 target="_blank"
@@ -222,7 +227,10 @@ const PortfolioGrid = () => {
           style={nextLine()}
         >
           <section>
-            <h2 className="glitch-in mb-[var(--baseline)] text-sm uppercase" style={nextLine()}>
+            <h2
+              className="glitch-in mb-[var(--baseline)] text-sm uppercase"
+              style={nextLine()}
+            >
               Projects
             </h2>
             <ul className="space-y-[var(--baseline)] text-sm">
@@ -268,14 +276,25 @@ const PortfolioGrid = () => {
           </section>
 
           <section className="mt-[calc(var(--baseline)*2)]">
-            <h2 className="glitch-in mb-[var(--baseline)] text-sm uppercase" style={nextLine()}>
+            <h2
+              className="glitch-in mb-[var(--baseline)] text-sm uppercase"
+              style={nextLine()}
+            >
               Talks
             </h2>
             <ul className="space-y-0 text-sm">
-              <li className="glitch-in" style={nextLine()}>2025: The Influence of Language on Worldviews</li>
-              <li className="glitch-in" style={nextLine()}>2024: Too Much Function, Not Enough Form</li>
-              <li className="glitch-in" style={nextLine()}>2023: You say potato, I say GHOUGHPHTHEIGHTTEEAU</li>
-              <li className="glitch-in" style={nextLine()}>2023: ECHOS Design Leadership Firesession</li>
+              <li className="glitch-in" style={nextLine()}>
+                2025: The Influence of Language on Worldviews
+              </li>
+              <li className="glitch-in" style={nextLine()}>
+                2024: Too Much Function, Not Enough Form
+              </li>
+              <li className="glitch-in" style={nextLine()}>
+                2023: You say potato, I say GHOUGHPHTHEIGHTTEEAU
+              </li>
+              <li className="glitch-in" style={nextLine()}>
+                2023: ECHOS Design Leadership Firesession
+              </li>
               <li className="glitch-in" style={nextLine()}>
                 <a
                   href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"
