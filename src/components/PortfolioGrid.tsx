@@ -403,11 +403,11 @@ const PortfolioGrid = () => {
         </div>
       </div>
 
-      {/* Preview Panel — fixed to the right of max-w-5xl on all sizes */}
+      {/* Preview Panel — docked beside the content at split+, slide-over below */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 z-50 flex justify-end lg:pointer-events-none"
+            className="fixed inset-0 z-50 flex justify-end split:pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -415,7 +415,7 @@ const PortfolioGrid = () => {
             onKeyDown={handleOverlayKeyDown}
           >
             <motion.div
-              className="absolute inset-0 bg-black/60 block lg:hidden"
+              className="absolute inset-0 bg-black/60 block split:hidden"
               onClick={handleOverlayClose}
               aria-label="Close preview"
               role="button"
@@ -428,7 +428,7 @@ const PortfolioGrid = () => {
 
             <motion.div
               ref={panelRef}
-              className="preview-overlay-panel pointer-events-auto relative z-10 flex h-full w-[min(90vw,810px)] lg:w-[calc(100vw-64rem)] flex-col overflow-y-auto overflow-x-clip bg-zinc-950 border-l border-[#1f1f23] p-6 pt-12 lg:pl-12 lg:pr-0"
+              className="preview-overlay-panel pointer-events-auto relative z-10 flex h-full w-[min(90vw,810px)] split:w-[calc(100vw-var(--main-w))] flex-col overflow-y-auto overflow-x-clip bg-zinc-950 border-l border-[#1f1f23] p-6 pt-12 split:pl-[var(--gutter)] split:pr-0"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -441,7 +441,7 @@ const PortfolioGrid = () => {
               <button
                 type="button"
                 onClick={handleOverlayClose}
-                className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center text-zinc-400 hover:text-white transition-colors lg:hidden"
+                className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center text-zinc-400 hover:text-white transition-colors split:hidden"
                 aria-label="Close preview"
                 tabIndex={0}
               >

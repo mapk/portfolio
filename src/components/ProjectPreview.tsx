@@ -61,7 +61,7 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
       >
         <div
           ref={shotRef}
-          className={`w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px]${project.shadow ? " shadow-[0_24px_64px_rgba(0,0,0,0.95)]" : ""}`}
+          className={`w-[min(640px,150%)] split:w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px]${project.shadow ? " shadow-[0_24px_64px_rgba(0,0,0,0.95)]" : ""}`}
         >
           {project.typeSpecimen ? (
             <TypeSpecimen />
