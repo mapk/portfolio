@@ -10,6 +10,7 @@ type Project = {
   previewDescription: string;
   url: string;
   screenshot: string;
+  shadow?: boolean;
 };
 
 type ProjectPreviewProps = {
@@ -57,16 +58,31 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
       >
         <div
           ref={shotRef}
-          className="w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px]"
+          className={`w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px]${project.shadow ? " shadow-[0_24px_64px_rgba(0,0,0,0.95)]" : ""}`}
         >
-          <motion.img
-            src={project.screenshot}
-            alt={`Screenshot of ${project.title}`}
-            className="block w-full h-auto"
-            initial={{ opacity: 0, filter: "grayscale(1) blur(6px)" }}
-            animate={{ opacity: 1, filter: "grayscale(0) blur(0px)" }}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          />
+          {/\.(mp4|webm)$/i.test(project.screenshot) ? (
+            <motion.video
+              src={project.screenshot}
+              aria-label={`Screen recording of ${project.title}`}
+              className="block w-full h-auto"
+              autoPlay
+              loop
+              muted
+              playsInline
+              initial={{ opacity: 0, filter: "grayscale(1) blur(6px)" }}
+              animate={{ opacity: 1, filter: "grayscale(0) blur(0px)" }}
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            />
+          ) : (
+            <motion.img
+              src={project.screenshot}
+              alt={`Screenshot of ${project.title}`}
+              className="block w-full h-auto"
+              initial={{ opacity: 0, filter: "grayscale(1) blur(6px)" }}
+              animate={{ opacity: 1, filter: "grayscale(0) blur(0px)" }}
+              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            />
+          )}
         </div>
       </a>
 
