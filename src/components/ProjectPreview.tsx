@@ -78,17 +78,19 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
         {project.previewDescription}
       </p>
 
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ animationDelay: "0.5s" }}
-        className="glitch-in external-link inline-flex items-center gap-1 text-sm text-white hover:text-[#eeff0d] transition-colors w-fit pl-3"
-        aria-label={`Visit ${project.title}`}
-        tabIndex={0}
-      >
-        Visit {project.title}
-      </a>
+      {/* Wrapper carries the intro glitch so the link's hover glitch doesn't replace (and replay) it. */}
+      <div className="glitch-in" style={{ animationDelay: "0.5s" }}>
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="external-link inline-flex items-center gap-1 text-sm text-white hover:text-[#eeff0d] transition-colors w-fit pl-3"
+          aria-label={`Visit ${project.title}`}
+          tabIndex={0}
+        >
+          Visit {project.title}
+        </a>
+      </div>
     </motion.div>
   );
 };
