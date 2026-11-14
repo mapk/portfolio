@@ -32,6 +32,31 @@ const berkeleyMono = localFont({
   display: "swap",
 });
 
+// Display typefaces shown in the Typefaces project specimen.
+const cyberPlate = localFont({
+  src: "../../public/fonts/CyberPlate-Regular.woff2",
+  variable: "--font-cyber-plate",
+  display: "block",
+});
+
+const fatPixel = localFont({
+  src: "../../public/fonts/FatPixel-Regular.woff2",
+  variable: "--font-fat-pixel",
+  display: "block",
+});
+
+const level = localFont({
+  src: "../../public/fonts/Level-Regular.woff2",
+  variable: "--font-level",
+  display: "block",
+});
+
+const shashki = localFont({
+  src: "../../public/fonts/Shashki.woff2",
+  variable: "--font-shashki",
+  display: "block",
+});
+
 const robotoMono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-roboto-mono",
@@ -52,7 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${berkeleyMono.variable} ${robotoMono.variable} font-mono antialiased bg-zinc-950 text-zinc-400`}
+        className={`${berkeleyMono.variable} ${robotoMono.variable} ${cyberPlate.variable} ${fatPixel.variable} ${level.variable} ${shashki.variable} font-mono antialiased bg-zinc-950 text-zinc-400`}
       >
         {children}
         <GlitchScramble />

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import TypeSpecimen from "@/components/TypeSpecimen";
 
 type Project = {
   id: string;
@@ -9,7 +10,9 @@ type Project = {
   listDescription: string;
   previewDescription: string;
   url: string;
-  screenshot: string;
+  screenshot?: string;
+  /** Render the live typeface specimen instead of a screenshot. */
+  typeSpecimen?: boolean;
   shadow?: boolean;
 };
 
@@ -60,7 +63,9 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
           ref={shotRef}
           className={`w-[clamp(640px,calc(100vw-800px),1280px)] max-w-none overflow-hidden rounded-[4px]${project.shadow ? " shadow-[0_24px_64px_rgba(0,0,0,0.95)]" : ""}`}
         >
-          {/\.(mp4|webm)$/i.test(project.screenshot) ? (
+          {project.typeSpecimen ? (
+            <TypeSpecimen />
+          ) : project.screenshot && /\.(mp4|webm)$/i.test(project.screenshot) ? (
             <motion.video
               src={project.screenshot}
               aria-label={`Screen recording of ${project.title}`}
