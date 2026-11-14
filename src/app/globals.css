@@ -29,36 +29,34 @@ body a:hover {
   color: #eeff0d;
 }
 
-/* Outbound links: reveal trailing arrow on hover/focus */
+/* Outbound links: reveal trailing arrow on hover/focus. The arrow is overlaid
+   past the link's end, so the link never changes size or nudges nearby text. */
 body a.external-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
 }
 
 body a.external-link::after {
   content: "↗";
+  position: absolute;
+  left: 100%;
+  top: 50%;
   font-size: 1.14em;
   line-height: 1;
-  width: 0;
   opacity: 0;
-  overflow: hidden;
   white-space: nowrap;
-  margin-left: 0;
-  flex-shrink: 0;
-  transform: translateX(-2px);
+  pointer-events: none;
+  transform: translate(calc(0.35em - 2px), -50%);
   transition:
-    width 0.15s ease,
     opacity 0.15s ease,
-    transform 0.15s ease,
-    margin-left 0.15s ease;
+    transform 0.15s ease;
 }
 
 body a.external-link:hover::after,
 body a.external-link:focus-visible::after {
-  width: 1.12em;
   opacity: 1;
-  margin-left: 0.35em;
-  transform: translateX(0);
+  transform: translate(0.35em, -50%);
 }
 
 body a > span {
@@ -94,22 +92,19 @@ body a > span {
     opacity: 1;
     transform: translateX(3px);
     clip-path: inset(40% 0 15% 0);
-    text-shadow:
-      -2px 0 #eeff0d,
-      2px 0 #00e5ff;
+    text-shadow: 4px 1px #eeff0d;
   }
   40% {
     opacity: 0.35;
     transform: translateX(-2px);
     clip-path: inset(10% 0 50% 0);
+    text-shadow: -3px 0 rgb(238 255 13 / 0.6);
   }
   60% {
     opacity: 1;
     transform: translateX(1px);
     clip-path: inset(55% 0 0 0);
-    text-shadow:
-      1px 0 #eeff0d,
-      -1px 0 #00e5ff;
+    text-shadow: 2px 1px #eeff0d;
   }
   80% {
     opacity: 1;
@@ -135,6 +130,12 @@ body a > span {
   animation: glitch-in 0.3s steps(1, end) both;
   animation-delay: calc(var(--intro-delay) + var(--i, 0) * 30ms);
 }
+
+/* Link hover is a one-shot character scramble (GlitchScramble.tsx). No CSS
+   jitter or clip-path here: those move the link's hit area out from under the
+   cursor, which drops and re-fires hover in a loop. */
+
+/* Scrambled-glyph colours live in GlitchScramble.tsx (::highlight won't parse here). */
 
 /* The column divider flickers on with the first line of its column. */
 @keyframes divider-in {

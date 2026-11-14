@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Roboto_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import GlitchScramble from "@/components/GlitchScramble";
 import "./globals.css";
 
 const berkeleyMono = localFont({
@@ -54,6 +55,7 @@ export default function RootLayout({
         className={`${berkeleyMono.variable} ${robotoMono.variable} font-mono antialiased bg-zinc-950 text-zinc-400`}
       >
         {children}
+        <GlitchScramble />
         <Analytics />
         <script
           src="https://getreactions.app/embed.js"
