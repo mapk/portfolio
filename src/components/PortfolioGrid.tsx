@@ -81,7 +81,7 @@ const PROJECTS: Project[] = [
     previewDescription:
       "A collection of custom-designed typefaces exploring geometric forms and modular letter construction.",
     url: "https://mapk.gumroad.com/",
-    screenshot: "/screenshots/type.jpg",
+    typeSpecimen: true,
   },
 ];
 
