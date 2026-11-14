@@ -12,6 +12,9 @@
   --text-xl: 1.1875rem;
   --text-2xl: 1.4375rem;
   --text-3xl: 1.8125rem;
+
+  /* Preview panel docks beside the content from here up; below, it slides over. */
+  --breakpoint-split: 72rem;
 }
 
 /* Unsized text inherits 1px below the 16px browser default */
@@ -272,22 +275,46 @@ body a > span {
   background-attachment: local;
 }
 
-/* Fluid two-column layout: columns shrink until min width, then stack */
-.portfolio-grid {
-  --col-min: 18rem;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(min(100%, var(--col-min)), 1fr)
-  );
+/* Layout sizing.
+   --gutter: page margin and column gutter; shrinks with the viewport.
+   --peek:   minimum width kept free beside the content for the preview panel —
+             half the 640px preview plus the panel's left gutter.
+   --main-w: content width. From the `split` breakpoint (72rem) up, the preview
+             panel sits beside the content, so the content gives up width to keep
+             at least half the preview visible. Below it, the panel slides over. */
+:root {
+  --gutter: clamp(1rem, 3.5vw, 3rem);
+  --peek: calc(20rem + var(--gutter));
+  --main-w: 64rem;
 }
 
-/* Stacked: space before projects column */
+@media (min-width: 72rem) {
+  :root {
+    --main-w: min(64rem, 100vw - var(--peek));
+  }
+}
+
+.portfolio-main {
+  width: 100%;
+  max-width: var(--main-w);
+  padding-inline: var(--gutter);
+}
+
+/* Stacked (single column): one left edge, whole page scrolls */
+.portfolio-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .portfolio-grid > .portfolio-col-right {
   margin-top: 3rem;
 }
 
 /* Two columns side-by-side: gutters, border, independent scroll */
-@media (min-width: 36rem) {
+@media (min-width: 48rem) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .baseline-grid {
     height: 100svh;
     overflow: hidden;
@@ -302,7 +329,7 @@ body a > span {
     width: calc(100% + 1rem);
     margin-left: -1rem;
     padding-left: 1rem;
-    padding-right: 3rem;
+    padding-right: var(--gutter);
     padding-bottom: 3rem;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -311,7 +338,7 @@ body a > span {
   .portfolio-grid > .portfolio-col-right {
     margin-top: 0;
     padding-top: 3rem;
-    padding-left: 3rem;
+    padding-left: var(--gutter);
     border-left: 1px solid #1f1f23;
     overflow-y: auto;
     overscroll-behavior: contain;
