@@ -15,7 +15,8 @@ const PROJECTS: Project[] = [
     previewDescription:
       "Ask a UI/UX or design-process question. Get one clear direction, the reasoning, cited evidence from named companies, and the tradeoffs.",
     url: "https://databacked.design/",
-    screenshot: "/screenshots/databackeddesign.png",
+    screenshot: "/screenshots/databacked-studio-blk.mp4",
+    shadow: true,
   },
   {
     id: "reactions",
@@ -24,7 +25,8 @@ const PROJECTS: Project[] = [
     previewDescription:
       "Getting early product feedback from real users is difficult. Planning time with customers that already have busy schedules often leads to no-shows, rescheduling, and time lost. Reactions helps get early feature designs in front of users from within your product.",
     url: "https://getreactions.app/",
-    screenshot: "/screenshots/reactions.png",
+    screenshot: "/screenshots/reactions-studio-blk.mp4",
+    shadow: true,
   },
   {
     id: "tolkovanye",
@@ -33,7 +35,8 @@ const PROJECTS: Project[] = [
     previewDescription:
       "A commentary platform for Bible chapters, offering deeper insights into Scripture through the perspective of the original Hebrew authors.",
     url: "https://tolkovanye.netlify.app/",
-    screenshot: "/screenshots/tolkovanye.jpg",
+    screenshot: "/screenshots/tolkovanye-studio-blk.mp4",
+    shadow: true,
   },
   {
     id: "word-upon-word",
