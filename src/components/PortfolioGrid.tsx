@@ -153,10 +153,7 @@ const SOCIAL_LINKS = [
   { label: "ADPList", url: "https://adplist.org/mentors/mark-uraine" },
 ];
 
-/** `[01]`-style list index. */
-const indexLabel = (i: number) => `[${String(i + 1).padStart(2, "0")}]`;
-
-/** Dim gutter glyph (index, tree branch, year) in a list row. */
+/** Dim gutter glyph (tree branch, year) in a list row. */
 const Marker = ({ children }: { children: React.ReactNode }) => (
   <span className="text-zinc-600" aria-hidden="true">
     {children}
@@ -275,7 +272,6 @@ const PortfolioGrid = ({
           </div>
 
           <section>
-            <SectionHeader prompt="ls ~/links" promptStyle={nextLine()} />
             <ul className="text-sm">
               {SOCIAL_LINKS.map((link, i) => (
                 <li
@@ -301,42 +297,37 @@ const PortfolioGrid = ({
             <section className="mt-[calc(var(--baseline)*2)]">
               <SectionHeader
                 title="Underlined"
-                prompt={`curius --recent -n ${readingSnippets.length}`}
-                promptStyle={nextLine()}
                 titleStyle={nextLine()}
               />
               <ul className="space-y-[var(--baseline)] text-sm">
-                {readingSnippets.map((snippet, i) => (
+                {readingSnippets.map((snippet) => (
                   <li
                     key={snippet.id}
-                    className="glitch-in list-row"
+                    className="glitch-in"
                     style={nextLine()}
                   >
-                    <Marker>{indexLabel(i)}</Marker>
-                    <div className="min-w-0">
-                      <blockquote className="text-zinc-400">
-                        &ldquo;{snippet.highlight}&rdquo;
-                      </blockquote>
-                      <div className="list-row">
-                        <Marker>└─</Marker>
-                        <div className="min-w-0">
-                          <a
-                            href={snippet.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="external-link"
-                          >
-                            {snippet.title}
-                          </a>
-                          {snippet.author && (
-                            <>
-                              <br />
-                              <span className="text-zinc-500">
-                                {snippet.author}
-                              </span>
-                            </>
-                          )}
-                        </div>
+                    <blockquote className="text-zinc-400">
+                      &ldquo;{snippet.highlight}&rdquo;
+                    </blockquote>
+                    <div className="list-row">
+                      <Marker>└─</Marker>
+                      <div className="min-w-0">
+                        <a
+                          href={snippet.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="external-link"
+                        >
+                          {snippet.title}
+                        </a>
+                        {snippet.author && (
+                          <>
+                            <br />
+                            <span className="text-zinc-500">
+                              {snippet.author}
+                            </span>
+                          </>
+                        )}
                       </div>
                     </div>
                   </li>
@@ -354,41 +345,41 @@ const PortfolioGrid = ({
           <section>
             <SectionHeader
               title="Projects"
-              prompt="ls ~/projects"
-              promptStyle={nextLine()}
               titleStyle={nextLine()}
             />
             <ul className="space-y-[var(--baseline)] text-sm">
-              {PROJECTS.map((project, i) => {
+              {PROJECTS.map((project) => {
                 const isActive = selectedProjectId === project.id;
                 return (
-                  <li
-                    key={project.id}
-                    className="glitch-in list-row"
-                    style={nextLine()}
-                  >
-                    <Marker>{indexLabel(i)}</Marker>
+                  <li key={project.id} className="glitch-in" style={nextLine()}>
                     <button
                       type="button"
                       data-project-button
-                      data-active={isActive || undefined}
                       onClick={() => handleProjectClick(project.id)}
-                      className="project-button cursor-pointer text-left"
+                      className={`cursor-pointer text-left transition-colors ${
+                        isActive
+                          ? "text-[#eeff0d]"
+                          : "text-white hover:text-[#eeff0d]"
+                      }`}
                       aria-label={`Preview ${project.title}`}
                       aria-pressed={isActive}
                       tabIndex={0}
                     >
                       <span
-                        className={`project-title${
+                        className={
                           project.id === "tolkovanye"
-                            ? " text-xs leading-[var(--baseline)]"
+                            ? "text-xs leading-[var(--baseline)]"
                             : ""
-                        }`}
+                        }
                       >
                         {project.title}
                       </span>
                       <br />
-                      <span className="project-desc text-sm">
+                      <span
+                        className={`text-sm ${
+                          isActive ? "text-[#eeff0d]" : "text-zinc-400"
+                        }`}
+                      >
                         {project.listDescription}
                       </span>
                     </button>
@@ -401,15 +392,13 @@ const PortfolioGrid = ({
           <section className="mt-[calc(var(--baseline)*2)]">
             <SectionHeader
               title="Talks"
-              prompt="cat talks.log"
-              promptStyle={nextLine()}
               titleStyle={nextLine()}
             />
             <ul className="text-sm">
               {TALKS.map((talk) => (
                 <li
                   key={`${talk.year}-${talk.title}-${talk.url ?? ""}`}
-                  className="glitch-in list-row"
+                  className="glitch-in list-row talk-row"
                   style={nextLine()}
                 >
                   <Marker>{talk.year}</Marker>

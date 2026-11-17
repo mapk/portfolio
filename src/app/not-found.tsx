@@ -15,9 +15,6 @@ export default function NotFound() {
         <Link href="/" className="text-white">
           cd ~
         </Link>
-        <span className="cursor-blink" aria-hidden="true">
-          █
-        </span>
       </p>
     </main>
   );

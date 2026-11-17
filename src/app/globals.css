@@ -199,7 +199,7 @@ body a > span {
 
 /* ── Terminal look ─────────────────────────────────────────────────────── */
 
-/* List row: dim gutter glyph ([01], ├─, year) + content with a hanging indent. */
+/* List row: dim gutter glyph (├─, year) + content with a hanging indent. */
 .list-row {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -207,55 +207,9 @@ body a > span {
   align-items: start;
 }
 
-/* Project rows: reverse-video (yellow block, dark text) when hovered or open. */
-.project-button .project-title {
-  color: #fff;
-}
-
-.project-button .project-desc {
-  color: #a1a1aa;
-}
-
-.project-button .project-title,
-.project-button .project-desc {
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  transition:
-    background-color 0.15s,
-    color 0.15s;
-}
-
-.project-button:hover .project-title,
-.project-button:hover .project-desc,
-.project-button:focus-visible .project-title,
-.project-button:focus-visible .project-desc,
-.project-button[data-active] .project-title,
-.project-button[data-active] .project-desc {
-  background-color: #eeff0d;
-  color: #1f1f23;
-}
-
-.project-button:focus-visible {
-  outline: none;
-}
-
-/* Block cursor: blinks once the intro has played. */
-@keyframes cursor-blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
-  }
-}
-
-.cursor-blink {
-  margin-left: 0.25ch;
-  color: #eeff0d;
-  animation: cursor-blink 1.06s steps(1, end) infinite;
-  animation-delay: var(--intro-delay);
+/* Talks: wider gap between the year and the title. */
+.list-row.talk-row {
+  column-gap: 3ch;
 }
 
 /* Vim/tmux-style status line pinned to the bottom of the content area. */
@@ -331,7 +285,6 @@ body a > span {
   .glitch-in,
   .divider-in,
   .animate-intro-pulse::before,
-  .cursor-blink,
   .crt {
     animation: none;
   }
@@ -385,10 +338,6 @@ body a > span {
 .yellow-bg-active a:hover {
   color: #0a0a0b !important;
 }
-.yellow-bg-active .project-button .project-title {
-  color: #18181b;
-}
-
 /* Shared baseline rhythm for cross-column line alignment */
 .baseline-grid {
   --baseline: 1.25rem;
