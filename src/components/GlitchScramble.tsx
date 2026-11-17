@@ -13,7 +13,7 @@ import { useEffect } from "react";
  * the scramble in the text's own colour.
  */
 
-const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+/<>?@$=_~";
+export const GLYPHS ="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+/<>?@$=_~";
 const FRAME_MS = 45; // how often unresolved glyphs re-roll
 // Text links, plus the project list buttons (which read as links).
 const LINK_SELECTOR = "a:not(:has(img, picture, svg)), [data-project-button]";

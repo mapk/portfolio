@@ -190,10 +190,41 @@ body a > span {
   animation: intro-pulse 0.8s ease-out 1.4s forwards;
 }
 
+/* Video loader: the intro dot, with its halo pulsing on a loop while frames load. */
+.loader-dot {
+  position: relative;
+  isolation: isolate;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #eeff0d;
+  transition: background-color 0.3s;
+}
+
+.loader-dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  background: #eeff0d;
+  opacity: 0;
+  animation: intro-pulse 1.2s ease-out infinite;
+}
+
+.loader-dot[data-error] {
+  background: #3f3f46;
+}
+
+.loader-dot[data-error]::before {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .glitch-in,
   .divider-in,
-  .animate-intro-pulse::before {
+  .animate-intro-pulse::before,
+  .loader-dot::before {
     animation: none;
   }
 }
