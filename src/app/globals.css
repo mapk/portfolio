@@ -140,27 +140,20 @@ body a > span {
 
 /* Scrambled-glyph colours live in GlitchScramble.tsx (::highlight won't parse here). */
 
-/* The column divider flickers on with the first line of its column. It's drawn
-   as a stack of │-style segments (one per baseline), coloured by this property. */
-@property --divider-color {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: #3f3f46;
-}
-
+/* The column divider flickers on with the first line of its column. */
 @keyframes divider-in {
   0% {
-    --divider-color: transparent;
+    border-left-color: transparent;
   }
   20% {
-    --divider-color: #3f3f46;
+    border-left-color: #1f1f23;
   }
   40% {
-    --divider-color: transparent;
+    border-left-color: transparent;
   }
   60%,
   100% {
-    --divider-color: #3f3f46;
+    border-left-color: #1f1f23;
   }
 }
 
@@ -441,17 +434,7 @@ body a > span {
     margin-top: 0;
     padding-top: 3rem;
     padding-left: var(--gutter);
-    /* │ divider: one dashed segment per baseline, fixed while the column scrolls */
-    background-image: repeating-linear-gradient(
-      to bottom,
-      var(--divider-color) 0,
-      var(--divider-color) calc(var(--baseline) - 6px),
-      transparent calc(var(--baseline) - 6px),
-      transparent var(--baseline)
-    );
-    background-size: 1px 100%;
-    background-position: 0 3px;
-    background-repeat: no-repeat;
+    border-left: 1px solid #1f1f23;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
