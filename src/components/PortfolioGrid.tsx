@@ -293,7 +293,7 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                 className="glitch-in mb-[var(--baseline)] text-sm uppercase"
                 style={nextLine()}
               >
-                Underlined
+                Highlighted Reading
               </h2>
               <ul className="space-y-[var(--baseline)] text-sm">
                 {readingSnippets.map((snippet) => (
