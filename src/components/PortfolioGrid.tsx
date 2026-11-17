@@ -401,7 +401,7 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                   className="glitch-in list-row talk-row"
                   style={nextLine()}
                 >
-                  <Marker>{talk.year}</Marker>
+                  <span>{talk.year}</span>
                   {talk.url ? (
                     <a
                       href={talk.url}
