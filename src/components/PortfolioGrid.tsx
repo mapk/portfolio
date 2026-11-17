@@ -7,8 +7,6 @@ import NameWithBlob from "@/components/NameWithBlob";
 import ProjectPreview from "@/components/ProjectPreview";
 import type { Project } from "@/components/ProjectPreview";
 import type { ReadingSnippet } from "@/lib/curius";
-import SectionHeader from "@/components/SectionHeader";
-import StatusBar from "@/components/StatusBar";
 
 const PROJECTS: Project[] = [
   {
@@ -162,13 +160,9 @@ const Marker = ({ children }: { children: React.ReactNode }) => (
 
 type PortfolioGridProps = {
   readingSnippets?: ReadingSnippet[];
-  generatedAt?: string;
 };
 
-const PortfolioGrid = ({
-  readingSnippets = [],
-  generatedAt,
-}: PortfolioGridProps) => {
+const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
     null,
   );
@@ -295,10 +289,12 @@ const PortfolioGrid = ({
 
           {readingSnippets.length > 0 && (
             <section className="mt-[calc(var(--baseline)*2)]">
-              <SectionHeader
-                title="Underlined"
-                titleStyle={nextLine()}
-              />
+              <h2
+                className="glitch-in mb-[var(--baseline)] text-sm uppercase"
+                style={nextLine()}
+              >
+                Underlined
+              </h2>
               <ul className="space-y-[var(--baseline)] text-sm">
                 {readingSnippets.map((snippet) => (
                   <li
@@ -343,10 +339,12 @@ const PortfolioGrid = ({
           style={nextLine()}
         >
           <section>
-            <SectionHeader
-              title="Projects"
-              titleStyle={nextLine()}
-            />
+            <h2
+              className="glitch-in mb-[var(--baseline)] text-sm uppercase"
+              style={nextLine()}
+            >
+              Projects
+            </h2>
             <ul className="space-y-[var(--baseline)] text-sm">
               {PROJECTS.map((project) => {
                 const isActive = selectedProjectId === project.id;
@@ -390,10 +388,12 @@ const PortfolioGrid = ({
           </section>
 
           <section className="mt-[calc(var(--baseline)*2)]">
-            <SectionHeader
-              title="Talks"
-              titleStyle={nextLine()}
-            />
+            <h2
+              className="glitch-in mb-[var(--baseline)] text-sm uppercase"
+              style={nextLine()}
+            >
+              Talks
+            </h2>
             <ul className="text-sm">
               {TALKS.map((talk) => (
                 <li
@@ -420,13 +420,6 @@ const PortfolioGrid = ({
           </section>
         </div>
       </div>
-
-      <StatusBar
-        projects={PROJECTS.length}
-        talks={TALKS.length}
-        underlined={readingSnippets.length}
-        generatedAt={generatedAt}
-      />
 
       {/* Preview Panel — docked beside the content at split+, slide-over below */}
       <AnimatePresence>

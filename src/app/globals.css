@@ -205,43 +205,6 @@ body a > span {
   column-gap: 3ch;
 }
 
-/* Vim/tmux-style status line pinned to the bottom of the content area. */
-:root {
-  --status-h: 1.5rem;
-}
-
-.status-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  gap: 1ch;
-  width: 100%;
-  max-width: var(--main-w);
-  height: var(--status-h);
-  padding-inline: var(--gutter);
-  border-top: 1px solid #1f1f23;
-  background: #0a0a0b;
-  color: #71717a;
-  white-space: nowrap;
-}
-
-.status-bar span {
-  line-height: var(--status-h);
-}
-
-.status-bar-counts {
-  display: none;
-}
-
-@media (min-width: 48rem) {
-  .status-bar-counts {
-    display: contents;
-  }
-}
-
 /* CRT: faint scanlines + vignette over everything; never blocks input. */
 @keyframes crt-flicker {
   0%,
@@ -393,17 +356,6 @@ body a > span {
   margin-top: 3rem;
 }
 
-/* Keep the last lines clear of the fixed status bar while the page scrolls. */
-.portfolio-main {
-  padding-bottom: var(--status-h);
-}
-
-@media (min-width: 48rem) {
-  .portfolio-main {
-    padding-bottom: 0;
-  }
-}
-
 /* Two columns side-by-side: gutters, border, independent scroll */
 @media (min-width: 48rem) {
   .portfolio-grid {
@@ -411,7 +363,7 @@ body a > span {
   }
 
   .baseline-grid {
-    height: calc(100svh - var(--status-h));
+    height: 100svh;
     overflow: hidden;
   }
 
