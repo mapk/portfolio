@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import NameWithBlob from "@/components/NameWithBlob";
 import ProjectPreview from "@/components/ProjectPreview";
 import type { Project } from "@/components/ProjectPreview";
+import type { ReadingSnippet } from "@/lib/curius";
 
 const PROJECTS: Project[] = [
   {
@@ -85,7 +86,11 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const PortfolioGrid = () => {
+type PortfolioGridProps = {
+  readingSnippets?: ReadingSnippet[];
+};
+
+const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
     null,
   );
@@ -222,6 +227,46 @@ const PortfolioGrid = () => {
               </li>
             </ul>
           </section>
+
+          {readingSnippets.length > 0 && (
+            <section className="mt-[calc(var(--baseline)*2)]">
+              <h2
+                className="glitch-in mb-[var(--baseline)] text-sm uppercase"
+                style={nextLine()}
+              >
+                Underlined
+              </h2>
+              <ul className="space-y-[var(--baseline)] text-sm">
+                {readingSnippets.map((snippet) => (
+                  <li
+                    key={snippet.id}
+                    className="glitch-in"
+                    style={nextLine()}
+                  >
+                    <blockquote className="text-zinc-400">
+                      &ldquo;{snippet.highlight}&rdquo;
+                    </blockquote>
+                    <a
+                      href={snippet.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="external-link"
+                    >
+                      {snippet.title}
+                    </a>
+                    {snippet.author && (
+                      <>
+                        <br />
+                        <span className="text-zinc-500">
+                          {snippet.author}
+                        </span>
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
 
         {/* Middle Column — Projects & Talks */}
