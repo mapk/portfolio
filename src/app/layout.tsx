@@ -80,6 +80,7 @@ export default function RootLayout({
         className={`${berkeleyMono.variable} ${robotoMono.variable} ${cyberPlate.variable} ${fatPixel.variable} ${level.variable} ${shashki.variable} font-mono antialiased bg-zinc-950 text-zinc-400`}
       >
         {children}
+        <div className="crt" aria-hidden="true" />
         <GlitchScramble />
         <Analytics />
         <script

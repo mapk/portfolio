@@ -190,41 +190,58 @@ body a > span {
   animation: intro-pulse 0.8s ease-out 1.4s forwards;
 }
 
-/* Video loader: the intro dot, with its halo pulsing on a loop while frames load. */
-.loader-dot {
-  position: relative;
-  isolation: isolate;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background: #eeff0d;
-  transition: background-color 0.3s;
+/* ── Terminal look ─────────────────────────────────────────────────────── */
+
+/* List row: dim gutter glyph (├─, year) + content with a hanging indent. */
+.list-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1ch;
+  align-items: start;
 }
 
-.loader-dot::before {
-  content: "";
-  position: absolute;
+/* Talks: wider gap between the year and the title. */
+.list-row.talk-row {
+  column-gap: 3ch;
+}
+
+/* CRT: faint scanlines + vignette over everything; never blocks input. */
+@keyframes crt-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.crt {
+  position: fixed;
   inset: 0;
-  z-index: -1;
-  border-radius: 9999px;
-  background: #eeff0d;
-  opacity: 0;
-  animation: intro-pulse 1.2s ease-out infinite;
-}
-
-.loader-dot[data-error] {
-  background: #3f3f46;
-}
-
-.loader-dot[data-error]::before {
-  animation: none;
+  z-index: 100;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgb(0 0 0 / 0.18) 2px,
+      rgb(0 0 0 / 0.18) 3px
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 60%,
+      rgb(0 0 0 / 0.35) 100%
+    );
+  animation: crt-flicker 6s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .glitch-in,
   .divider-in,
   .animate-intro-pulse::before,
-  .loader-dot::before {
+  .crt {
     animation: none;
   }
 }
@@ -277,7 +294,6 @@ body a > span {
 .yellow-bg-active a:hover {
   color: #0a0a0b !important;
 }
-
 /* Shared baseline rhythm for cross-column line alignment */
 .baseline-grid {
   --baseline: 1.25rem;

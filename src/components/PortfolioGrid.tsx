@@ -86,6 +86,78 @@ const PROJECTS: Project[] = [
   },
 ];
 
+type Talk = { year: string; title: string; url?: string };
+
+const TALKS: Talk[] = [
+  { year: "2025", title: "The Influence of Language on Worldviews" },
+  { year: "2024", title: "Too Much Function, Not Enough Form" },
+  { year: "2023", title: "You say potato, I say GHOUGHPHTHEIGHTTEEAU" },
+  { year: "2023", title: "ECHOS Design Leadership Firesession" },
+  {
+    year: "2020",
+    title: "Disrupting Innovation",
+    url: "https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/",
+  },
+  {
+    year: "2019",
+    title: "Disrupting Innovation",
+    url: "https://www.youtube.com/watch?v=8R8x7Oj9f5w",
+  },
+  {
+    year: "2019",
+    title: "Designing in the Open, Remotely",
+    url: "https://wordpress.tv/2019/09/08/mark-uraine-designing-in-the-open-remotely/",
+  },
+  {
+    year: "2019",
+    title: "Panelist: Growing Beyond Gutenberg",
+    url: "https://wordpress.tv/2019/09/05/panel-growing-beyond-gutenberg-from-block-based-editing-to-site-administration/",
+  },
+  {
+    year: "2018",
+    title: "Designing with the API",
+    url: "https://wordpress.tv/2018/08/17/mark-uraine-designing-with-the-api-p1-of-3/",
+  },
+  {
+    year: "2017",
+    title: "Visual Data Using the WordPress API",
+    url: "https://europe.wordcamp.org/2017/session/workshop-visual-data-using-the-wordpress-api/",
+  },
+  {
+    year: "2017",
+    title: "Visual Data + Computational Design",
+    url: "https://speakerdeck.com/mapk/visual-data-plus-computational-design",
+  },
+  {
+    year: "2017",
+    title: "Designing in the Open",
+    url: "https://wordpress.tv/2017/05/09/mark-uraine-designing-in-the-open/",
+  },
+  {
+    year: "2016",
+    title: "Design for Telepathy",
+    url: "https://wordpress.tv/2016/10/08/mark-uraine-design-for-telepathy/",
+  },
+  {
+    year: "2016",
+    title: "Design Thinking",
+    url: "https://wordpress.tv/2016/06/06/mark-uraine-design-thinking-thinking-like-a-designer/",
+  },
+];
+
+const SOCIAL_LINKS = [
+  { label: "LinkedIn", url: "https://www.linkedin.com/in/uraine/" },
+  { label: "Github", url: "https://github.com/mapk" },
+  { label: "ADPList", url: "https://adplist.org/mentors/mark-uraine" },
+];
+
+/** Dim gutter glyph (tree branch, year) in a list row. */
+const Marker = ({ children }: { children: React.ReactNode }) => (
+  <span className="text-zinc-600" aria-hidden="true">
+    {children}
+  </span>
+);
+
 type PortfolioGridProps = {
   readingSnippets?: ReadingSnippet[];
 };
@@ -194,37 +266,24 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
           </div>
 
           <section>
-            <ul className="space-y-0 text-sm">
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://www.linkedin.com/in/uraine/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
+            <ul className="text-sm">
+              {SOCIAL_LINKS.map((link, i) => (
+                <li
+                  key={link.url}
+                  className="glitch-in list-row"
+                  style={nextLine()}
                 >
-                  LinkedIn
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://github.com/mapk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  Github
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://adplist.org/mentors/mark-uraine"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  ADPList
-                </a>
-              </li>
+                  <Marker>{i === SOCIAL_LINKS.length - 1 ? "└─" : "├─"}</Marker>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="external-link w-fit"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </section>
 
@@ -234,7 +293,7 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                 className="glitch-in mb-[var(--baseline)] text-sm uppercase"
                 style={nextLine()}
               >
-                Underlined
+                Highlighted Reading
               </h2>
               <ul className="space-y-[var(--baseline)] text-sm">
                 {readingSnippets.map((snippet) => (
@@ -246,22 +305,27 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                     <blockquote className="text-zinc-400">
                       &ldquo;{snippet.highlight}&rdquo;
                     </blockquote>
-                    <a
-                      href={snippet.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="external-link"
-                    >
-                      {snippet.title}
-                    </a>
-                    {snippet.author && (
-                      <>
-                        <br />
-                        <span className="text-zinc-500">
-                          {snippet.author}
-                        </span>
-                      </>
-                    )}
+                    <div className="list-row">
+                      <Marker>└─</Marker>
+                      <div className="min-w-0">
+                        <a
+                          href={snippet.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="external-link"
+                        >
+                          {snippet.title}
+                        </a>
+                        {snippet.author && (
+                          <>
+                            <br />
+                            <span className="text-zinc-500">
+                              {snippet.author}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -330,119 +394,28 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
             >
               Talks
             </h2>
-            <ul className="space-y-0 text-sm">
-              <li className="glitch-in" style={nextLine()}>
-                2025: The Influence of Language on Worldviews
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                2024: Too Much Function, Not Enough Form
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                2023: You say potato, I say GHOUGHPHTHEIGHTTEEAU
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                2023: ECHOS Design Leadership Firesession
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://wordpress.tv/2020/05/30/mark-uraine-gutenberg-and-how-its-disrupting-wordpress/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
+            <ul className="text-sm">
+              {TALKS.map((talk) => (
+                <li
+                  key={`${talk.year}-${talk.title}-${talk.url ?? ""}`}
+                  className="glitch-in list-row talk-row"
+                  style={nextLine()}
                 >
-                  2020: Disrupting Innovation
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://www.youtube.com/watch?v=8R8x7Oj9f5w"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2019: Disrupting Innovation
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://wordpress.tv/2019/09/08/mark-uraine-designing-in-the-open-remotely/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2019: Designing in the Open, Remotely
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://wordpress.tv/2019/09/05/panel-growing-beyond-gutenberg-from-block-based-editing-to-site-administration/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2019: Panelist: Growing Beyond Gutenberg
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://wordpress.tv/2018/08/17/mark-uraine-designing-with-the-api-p1-of-3/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2018: Designing with the API
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://europe.wordcamp.org/2017/session/workshop-visual-data-using-the-wordpress-api/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2017: Visual Data Using the WordPress API
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://speakerdeck.com/mapk/visual-data-plus-computational-design"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2017: Visual Data + Computational Design
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://wordpress.tv/2017/05/09/mark-uraine-designing-in-the-open/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2017: Designing in the Open
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://wordpress.tv/2016/10/08/mark-uraine-design-for-telepathy/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2016: Design for Telepathy
-                </a>
-              </li>
-              <li className="glitch-in" style={nextLine()}>
-                <a
-                  href="https://wordpress.tv/2016/06/06/mark-uraine-design-thinking-thinking-like-a-designer/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="external-link"
-                >
-                  2016: Design Thinking
-                </a>
-              </li>
+                  <span>{talk.year}</span>
+                  {talk.url ? (
+                    <a
+                      href={talk.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="external-link w-fit"
+                    >
+                      {talk.title}
+                    </a>
+                  ) : (
+                    <span>{talk.title}</span>
+                  )}
+                </li>
+              ))}
             </ul>
           </section>
         </div>
