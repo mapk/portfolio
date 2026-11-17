@@ -1,20 +1,24 @@
 import Link from "next/link";
+import MissingPath from "@/components/MissingPath";
 
 export default function NotFound() {
   return (
-    <main className="max-w-5xl pl-4 pr-4 pt-12 md:pl-12 md:pr-12">
-      <h1 className="mb-4 text-2xl font-medium tracking-tight text-white sm:text-3xl">
-        404
-      </h1>
-      <p className="mb-4 text-sm text-zinc-400">
-        The page you&apos;re looking for doesn&apos;t exist.
+    <main className="portfolio-main baseline-grid pt-12 text-sm">
+      <p className="text-zinc-600">
+        $ cd <MissingPath />
       </p>
-      <Link
-        href="/"
-        className="text-sm text-zinc-400 transition-colors hover:text-white focus:text-white focus:outline-none"
-      >
-        Back to home
-      </Link>
+      <p className="text-zinc-400">
+        bash: cd: <MissingPath />: No such file or directory
+      </p>
+      <p className="mt-[var(--baseline)]">
+        <span className="text-zinc-600">$ </span>
+        <Link href="/" className="text-white">
+          cd ~
+        </Link>
+        <span className="cursor-blink" aria-hidden="true">
+          █
+        </span>
+      </p>
     </main>
   );
 }

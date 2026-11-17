@@ -272,6 +272,9 @@ export default function NameWithBlob({ nameStyle }: NameWithBlobProps) {
         style={nameStyle}
       >
         Mark Uraine
+        <span className="cursor-blink" aria-hidden="true">
+          █
+        </span>
       </span>
     </h1>
     </>

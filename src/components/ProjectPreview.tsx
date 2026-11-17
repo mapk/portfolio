@@ -71,13 +71,67 @@ const ScrambleLabel = ({ text, animate }: { text: string; animate: boolean }) =>
   );
 };
 
+const LOADER_CELLS = 12;
+const LOADER_BLOCK = 3;
+const LOADER_STEP_MS = 90;
+
+/** Indeterminate text progress bar: a block of █ bouncing through ░ cells. */
+const AsciiLoader = ({
+  errored,
+  animate,
+}: {
+  errored: boolean;
+  animate: boolean;
+}) => {
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    if (errored || !animate) return;
+    const id = window.setInterval(() => setStep((s) => s + 1), LOADER_STEP_MS);
+    return () => window.clearInterval(id);
+  }, [errored, animate]);
+
+  if (errored) {
+    return (
+      <span className="text-xs tracking-widest text-zinc-600" aria-hidden="true">
+        [ ERR ]
+      </span>
+    );
+  }
+
+  // Ping-pong the block's start position between both ends.
+  const span = LOADER_CELLS - LOADER_BLOCK;
+  const phase = animate ? step % (span * 2) : -1;
+  const start = phase < 0 ? -1 : phase <= span ? phase : span * 2 - phase;
+  const isFilled = (i: number) =>
+    start >= 0 && i >= start && i < start + LOADER_BLOCK;
+
+  return (
+    <span className="text-xs text-zinc-500" aria-hidden="true">
+      [
+      {Array.from({ length: LOADER_CELLS }, (_, i) =>
+        isFilled(i) ? (
+          <span key={i} className="text-[#eeff0d]">
+            █
+          </span>
+        ) : (
+          <span key={i} className="text-zinc-700">
+            ░
+          </span>
+        ),
+      )}
+      ]
+    </span>
+  );
+};
+
 type VideoWithLoaderProps = {
   src: string;
   title: string;
   aspect: string;
 };
 
-/** Video that holds its frame and shows the dot loader until the first frame is ready. */
+/** Video that holds its frame and shows the text loader until the first frame is ready. */
 const VideoWithLoader = ({ src, title, aspect }: VideoWithLoaderProps) => {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
@@ -135,7 +189,7 @@ const VideoWithLoader = ({ src, title, aspect }: VideoWithLoaderProps) => {
             transition={{ duration: 0.3, ease: EASE }}
           >
             <div className="flex flex-col items-center gap-4">
-              <span className="loader-dot" data-error={errored || undefined} />
+              <AsciiLoader errored={errored} animate={!reducedMotion} />
               <span className="text-xs tracking-widest text-zinc-500">
                 <ScrambleLabel key={label} text={label} animate={!errored && !reducedMotion} />
               </span>

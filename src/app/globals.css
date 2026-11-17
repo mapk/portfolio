@@ -140,20 +140,27 @@ body a > span {
 
 /* Scrambled-glyph colours live in GlitchScramble.tsx (::highlight won't parse here). */
 
-/* The column divider flickers on with the first line of its column. */
+/* The column divider flickers on with the first line of its column. It's drawn
+   as a stack of │-style segments (one per baseline), coloured by this property. */
+@property --divider-color {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #3f3f46;
+}
+
 @keyframes divider-in {
   0% {
-    border-left-color: transparent;
+    --divider-color: transparent;
   }
   20% {
-    border-left-color: #1f1f23;
+    --divider-color: #3f3f46;
   }
   40% {
-    border-left-color: transparent;
+    --divider-color: transparent;
   }
   60%,
   100% {
-    border-left-color: #1f1f23;
+    --divider-color: #3f3f46;
   }
 }
 
@@ -190,41 +197,142 @@ body a > span {
   animation: intro-pulse 0.8s ease-out 1.4s forwards;
 }
 
-/* Video loader: the intro dot, with its halo pulsing on a loop while frames load. */
-.loader-dot {
-  position: relative;
-  isolation: isolate;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background: #eeff0d;
-  transition: background-color 0.3s;
+/* ── Terminal look ─────────────────────────────────────────────────────── */
+
+/* List row: dim gutter glyph ([01], ├─, year) + content with a hanging indent. */
+.list-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1ch;
+  align-items: start;
 }
 
-.loader-dot::before {
-  content: "";
-  position: absolute;
+/* Project rows: reverse-video (yellow block, dark text) when hovered or open. */
+.project-button .project-title {
+  color: #fff;
+}
+
+.project-button .project-desc {
+  color: #a1a1aa;
+}
+
+.project-button .project-title,
+.project-button .project-desc {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.project-button:hover .project-title,
+.project-button:hover .project-desc,
+.project-button:focus-visible .project-title,
+.project-button:focus-visible .project-desc,
+.project-button[data-active] .project-title,
+.project-button[data-active] .project-desc {
+  background-color: #eeff0d;
+  color: #1f1f23;
+}
+
+.project-button:focus-visible {
+  outline: none;
+}
+
+/* Block cursor: blinks once the intro has played. */
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  margin-left: 0.25ch;
+  color: #eeff0d;
+  animation: cursor-blink 1.06s steps(1, end) infinite;
+  animation-delay: var(--intro-delay);
+}
+
+/* Vim/tmux-style status line pinned to the bottom of the content area. */
+:root {
+  --status-h: 1.5rem;
+}
+
+.status-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+  width: 100%;
+  max-width: var(--main-w);
+  height: var(--status-h);
+  padding-inline: var(--gutter);
+  border-top: 1px solid #1f1f23;
+  background: #0a0a0b;
+  color: #71717a;
+  white-space: nowrap;
+}
+
+.status-bar span {
+  line-height: var(--status-h);
+}
+
+.status-bar-counts {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .status-bar-counts {
+    display: contents;
+  }
+}
+
+/* CRT: faint scanlines + vignette over everything; never blocks input. */
+@keyframes crt-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.crt {
+  position: fixed;
   inset: 0;
-  z-index: -1;
-  border-radius: 9999px;
-  background: #eeff0d;
-  opacity: 0;
-  animation: intro-pulse 1.2s ease-out infinite;
-}
-
-.loader-dot[data-error] {
-  background: #3f3f46;
-}
-
-.loader-dot[data-error]::before {
-  animation: none;
+  z-index: 100;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgb(0 0 0 / 0.18) 2px,
+      rgb(0 0 0 / 0.18) 3px
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 60%,
+      rgb(0 0 0 / 0.35) 100%
+    );
+  animation: crt-flicker 6s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .glitch-in,
   .divider-in,
   .animate-intro-pulse::before,
-  .loader-dot::before {
+  .cursor-blink,
+  .crt {
     animation: none;
   }
 }
@@ -276,6 +384,9 @@ body a > span {
 }
 .yellow-bg-active a:hover {
   color: #0a0a0b !important;
+}
+.yellow-bg-active .project-button .project-title {
+  color: #18181b;
 }
 
 /* Shared baseline rhythm for cross-column line alignment */
@@ -340,6 +451,17 @@ body a > span {
   margin-top: 3rem;
 }
 
+/* Keep the last lines clear of the fixed status bar while the page scrolls. */
+.portfolio-main {
+  padding-bottom: var(--status-h);
+}
+
+@media (min-width: 48rem) {
+  .portfolio-main {
+    padding-bottom: 0;
+  }
+}
+
 /* Two columns side-by-side: gutters, border, independent scroll */
 @media (min-width: 48rem) {
   .portfolio-grid {
@@ -347,7 +469,7 @@ body a > span {
   }
 
   .baseline-grid {
-    height: 100svh;
+    height: calc(100svh - var(--status-h));
     overflow: hidden;
   }
 
@@ -370,7 +492,17 @@ body a > span {
     margin-top: 0;
     padding-top: 3rem;
     padding-left: var(--gutter);
-    border-left: 1px solid #1f1f23;
+    /* │ divider: one dashed segment per baseline, fixed while the column scrolls */
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--divider-color) 0,
+      var(--divider-color) calc(var(--baseline) - 6px),
+      transparent calc(var(--baseline) - 6px),
+      transparent var(--baseline)
+    );
+    background-size: 1px 100%;
+    background-position: 0 3px;
+    background-repeat: no-repeat;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
