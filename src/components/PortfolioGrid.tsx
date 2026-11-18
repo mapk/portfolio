@@ -12,6 +12,9 @@ const PROJECTS: Project[] = [
   {
     id: "data-backed-design",
     title: "Data Backed Design",
+    status: "Live",
+    year: "2026",
+    role: "solo, design + build",
     listDescription: "Get evidence-backed answers to UI/UX questions.",
     previewDescription:
       "Ask a UI/UX or design-process question. Get one clear direction, the reasoning, cited evidence from named companies, and the tradeoffs.",
@@ -22,6 +25,9 @@ const PROJECTS: Project[] = [
   {
     id: "reactions",
     title: "Reactions",
+    status: "Live",
+    year: "2026",
+    role: "solo, design + build",
     listDescription: "Collect early feedback from within your product.",
     previewDescription:
       "Collecting early product feedback from real users is difficult. Planning time with customers that already have busy schedules often leads to no-shows, rescheduling, and time lost. Reactions helps get early feature designs in front of users from within your product.",
@@ -32,6 +38,9 @@ const PROJECTS: Project[] = [
   {
     id: "tolkovanye",
     title: "Tолкование",
+    status: "Live",
+    year: "2024",
+    role: "solo, design + build",
     listDescription: "Read insightful commentary on Bible verses.",
     previewDescription:
       "A commentary platform for Bible chapters, offering deeper insights into Scripture through the perspective of the original Hebrew authors.",
@@ -42,6 +51,9 @@ const PROJECTS: Project[] = [
   {
     id: "word-upon-word",
     title: "Word Upon Word",
+    status: "Live",
+    year: "2024",
+    role: "solo, design + build",
     listDescription: "Learn Russian through comprehensible input.",
     previewDescription:
       "An interactive language learning app that teaches Russian through comprehensible input, with inline word definitions and pronunciation guides.",
@@ -51,6 +63,9 @@ const PROJECTS: Project[] = [
   {
     id: "eat-your-greens",
     title: "Eat Your Greens",
+    status: "Live",
+    year: "2024",
+    role: "solo, design + build",
     listDescription: "Track food nutrients by color.",
     previewDescription:
       "A nutrition tracking app that encourages a balanced diet by categorizing food by color for a more intuitive approach to healthy eating.",
@@ -60,6 +75,8 @@ const PROJECTS: Project[] = [
   {
     id: "yeshuas-purpose",
     title: "Yeshua\u2019s Purpose",
+    status: "Live",
+    role: "solo, design + build",
     listDescription: "Follow a timeline about the promised Messiah.",
     previewDescription:
       "A narrative biblical timeline exploring the purpose of Yeshua as the Messiah who reunites a divided kingdom.",
@@ -69,6 +86,8 @@ const PROJECTS: Project[] = [
   {
     id: "covenants",
     title: "\u05D1\u05E8\u05D9\u05EA\u05D5\u05EA",
+    status: "Live",
+    role: "solo, design + build",
     listDescription: "Review covenant details throughout history.",
     previewDescription:
       "An interactive visualization mapping the covenants throughout biblical history, showing how they build upon each other.",
@@ -78,6 +97,8 @@ const PROJECTS: Project[] = [
   {
     id: "typefaces",
     title: "Typefaces",
+    status: "Live",
+    role: "solo, design + build",
     listDescription: "Check out a few typefaces I designed.",
     previewDescription:
       "A collection of custom-designed typefaces exploring geometric forms and modular letter construction.",
@@ -91,7 +112,11 @@ type Talk = { year: string; title: string; url?: string };
 const TALKS: Talk[] = [
   { year: "2025", title: "The Influence of Language on Worldviews" },
   { year: "2024", title: "Too Much Function, Not Enough Form" },
-  { year: "2023", title: "You say potato, I say GHOUGHPHTHEIGHTTEEAU" },
+  {
+    year: "2023",
+    title: "You say potato, I say GHOUGHPHTHEIGHTTEEAU",
+    url: "https://docs.google.com/presentation/d/1HyoJ74OBLZ5WdAV3_4zt8uFQVWjQPHW2uIGYsRoyeTE/edit?usp=sharing",
+  },
   { year: "2023", title: "ECHOS Design Leadership Firesession" },
   {
     year: "2020",

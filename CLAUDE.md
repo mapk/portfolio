@@ -62,6 +62,7 @@ Almost all copy is in `src/components/PortfolioGrid.tsx`:
 - **Intro bio**: the `<p>` under `<NameWithBlob>`. Links in it are plain `<a target="_blank" rel="noopener noreferrer">`.
 - **`PROJECTS: Project[]`**: order in the array = order on the page.
   - `id` (kebab-case, unique), `title`, `listDescription` (one short line in the list), `previewDescription` (paragraph in the panel), `url`.
+  - `status` (e.g. `"Live"`), optional `year`, and `role` (e.g. `"solo, design + build"`) render as one meta line above the preview description. With a `year` it reads `Launched 2026 · solo, design + build`; without, `Live · solo, design + build`. Leave `year` off when Mark doesn't want a date shown.
   - Media: `screenshot` path under `/screenshots/`. `.mp4`/`.webm` renders through `VideoWithLoader` (autoplay, muted, loop, ASCII loader); anything else is an `<img>`. Set `typeSpecimen: true` instead to render `TypeSpecimen`.
   - `shadow: true` adds the heavy drop shadow (used on the "studio-blk" videos). `aspect` overrides the reserved video ratio (default `"1656 / 1080"`).
   - Non-Latin titles are fine (Cyrillic, Hebrew); use `\u` escapes for curly quotes / RTL text as the existing entries do. `tolkovanye` gets a one-off `text-xs` title size, keyed by id.

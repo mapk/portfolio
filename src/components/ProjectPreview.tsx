@@ -8,6 +8,12 @@ import { GLYPHS } from "@/components/GlitchScramble";
 type Project = {
   id: string;
   title: string;
+  /** e.g. "Live". Shown with year and role on one meta line in the preview. */
+  status: string;
+  /** Launch year, shown as "Launched YYYY" in place of status; omit to show status. */
+  year?: string;
+  /** Who made it, e.g. "solo, design + build". */
+  role: string;
   listDescription: string;
   previewDescription: string;
   url: string;
@@ -210,6 +216,10 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
   const textRef = useRef<HTMLParagraphElement>(null);
   const [shotHeight, setShotHeight] = useState<number>();
 
+  // "Launched 2026 · solo, design + build", or "Live · …" with no year
+  const status = project.year ? `Launched ${project.year}` : project.status;
+  const meta = `${status} · ${project.role}`;
+
   // Round the screenshot's block up to whole baselines so the text below stays on the grid
   useEffect(() => {
     const shot = shotRef.current;
@@ -270,13 +280,21 @@ const ProjectPreview = ({ project }: ProjectPreviewProps) => {
         </div>
       </a>
 
-      <p
-        ref={textRef}
-        className="glitch-in max-w-[416px] text-sm leading-[var(--baseline)] text-zinc-400 pl-3"
-        style={{ animationDelay: "0.45s" }}
-      >
-        {project.previewDescription}
-      </p>
+      <div className="max-w-[416px] pl-3 text-sm">
+        <p
+          className="glitch-in text-zinc-500"
+          style={{ animationDelay: "0.4s" }}
+        >
+          {meta}
+        </p>
+        <p
+          ref={textRef}
+          className="glitch-in leading-[var(--baseline)] text-zinc-400"
+          style={{ animationDelay: "0.45s" }}
+        >
+          {project.previewDescription}
+        </p>
+      </div>
 
       {/* Wrapper carries the intro glitch so the link's hover glitch doesn't replace (and replay) it. */}
       <div className="glitch-in" style={{ animationDelay: "0.5s" }}>
