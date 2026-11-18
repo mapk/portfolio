@@ -335,7 +335,7 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
 
         {/* Middle Column — Projects & Talks */}
         <div
-          className="portfolio-col-right divider-in w-full min-w-0 pb-12"
+          className="portfolio-col-right divider-in w-full min-w-0"
           style={nextLine()}
         >
           <section>
