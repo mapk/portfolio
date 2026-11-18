@@ -94,7 +94,9 @@ Defined by CSS vars in `globals.css`:
 - **≥ 48rem**: two columns (bio/links/reading | projects/talks), each scrolls independently inside a `100svh` viewport, solid `#1f1f23` divider, scrollbars hidden.
 - **≥ 72rem (`split` breakpoint, custom Tailwind breakpoint)**: preview panel docks beside the content (no backdrop, no close button). Below it, the panel slides over with a dimmed backdrop and an × button.
 
-Check both sides of 48rem and 72rem after layout changes. The Reactions feedback widget (third-party script in `layout.tsx`) floats bottom-right and can cover content on mobile.
+Check both sides of 48rem and 72rem after layout changes.
+
+**Reactions widget**: the `getreactions.app/embed.js` script in `layout.tsx` injects a fixed 80×80 iframe in a corner (bottom-right; set in the Reactions dashboard, not here). It's hidden entirely below 48rem (single-column layout) via a `display: none !important` rule in `globals.css`. In the two-column layout each scroll column ends with 5 baselines of bottom padding so the last lines can scroll clear of it. Keep that padding if you change column spacing.
 
 ## Curius "Highlighted Reading"
 

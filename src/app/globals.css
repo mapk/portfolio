@@ -356,6 +356,27 @@ body a > span {
   margin-top: 3rem;
 }
 
+.portfolio-grid > .portfolio-col-right {
+  padding-bottom: 3rem;
+}
+
+/* Reactions feedback button (embed script in layout.tsx): hidden entirely in
+   the single-column layout. The embed sets display inline, so !important. */
+@media not (min-width: 48rem) {
+  iframe[src^="https://getreactions.app/"] {
+    display: none !important;
+  }
+}
+
+/* Two columns: each scroll area ends with 5 baselines of space so its last
+   lines can scroll clear of the 80px Reactions button. */
+@media (min-width: 48rem) {
+  .portfolio-grid > .portfolio-col-left,
+  .portfolio-grid > .portfolio-col-right {
+    padding-bottom: calc(var(--baseline) * 5);
+  }
+}
+
 /* Two columns side-by-side: gutters, border, independent scroll */
 @media (min-width: 48rem) {
   .portfolio-grid {
@@ -377,7 +398,6 @@ body a > span {
     margin-left: -1rem;
     padding-left: 1rem;
     padding-right: var(--gutter);
-    padding-bottom: 3rem;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
