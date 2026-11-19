@@ -42,6 +42,8 @@ src/components/
   PortfolioGrid.tsx       Client. ALL page content (PROJECTS, TALKS, SOCIAL_LINKS, intro bio) + two-column
                           layout + preview panel open/close logic
   ProjectPreview.tsx      Preview panel body: video/image/type specimen, description, visit link.
+  StoryPreview.tsx        Leadership story panel: title, meta, BeforeAfter sliders/image, stats, description
+  BeforeAfter.tsx         Before/after comparison slider (drag, arrow keys, caption jump buttons)
                           Exports the `Project` type
   GlitchScramble.tsx      Character-scramble effect on `.glitch-in` intro and link hover. Exports GLYPHS
   NameWithBlob.tsx        Name + yellow dot easter egg (cursor follow, click-to-place dots, audio, yellow flood)
@@ -66,6 +68,7 @@ Almost all copy is in `src/components/PortfolioGrid.tsx`:
   - Media: `screenshot` path under `/screenshots/`. `.mp4`/`.webm` renders through `VideoWithLoader` (autoplay, muted, loop, ASCII loader); anything else is an `<img>`. Set `typeSpecimen: true` instead to render `TypeSpecimen`.
   - `shadow: true` adds the heavy drop shadow (used on the "studio-blk" videos). `aspect` overrides the reserved video ratio (default `"1656 / 1080"`).
   - Non-Latin titles are fine (Cyrillic, Hebrew); use `\u` escapes for curly quotes / RTL text as the existing entries do. `tolkovanye` gets a one-off `text-xs` title size, keyed by id.
+- **`STORIES: Story[]`**: leadership work. Listed first in the middle column under "Design Leadership" (above Projects), and also opened from buttons in the intro bio (`storyButton(id, text)`). Both lists render through the shared `listItem()` row. Rendered by `StoryPreview.tsx` in the same preview panel as projects; one `selectedId` drives both. Fields: `id`, `title`, optional `listTitle` (list label when it differs, e.g. "Prototype Playground"), `listDescription`, `meta`, `url`, `description` (blank lines `\n\n` split paragraphs), optional `comparisons` (`{ label, before, after, aspect? }`) rendered as `BeforeAfter` sliders, optional `image` (`{ src, alt, aspect }`, a single still in place of sliders), and optional `stats` (`{ value, label }`, shown as cards under the sliders). Shopmonkey screens live in `public/screenshots/shopmonkey/` (exported from the Figma "Before / After" file, 1440×900).
 - **`TALKS`**: `{ year, title, url? }`, newest first. No `url` renders plain text. React key is `year-title-url`, so duplicate titles need distinct years/urls.
 - **`SOCIAL_LINKS`**: `{ label, url }`. Tree glyph (`├─` / `└─`) is chosen automatically by position.
 - **Site metadata** (title/description): `metadata` in `src/app/layout.tsx`.
@@ -94,6 +97,7 @@ Defined by CSS vars in `globals.css`:
 - **< 48rem**: single column, whole page scrolls.
 - **≥ 48rem**: two columns (bio/links/reading | projects/talks), each scrolls independently inside a `100svh` viewport, solid `#1f1f23` divider, scrollbars hidden.
 - **≥ 72rem (`split` breakpoint, custom Tailwind breakpoint)**: preview panel docks beside the content (no backdrop, no close button). Below it, the panel slides over with a dimmed backdrop and an × button.
+- Story previews add `.is-story` to the panel: at `split`+ it widens over the projects column (`min(1080px, 100vw - 32rem)`, never narrower than the normal panel) so the before/after sliders have room, while the bio stays visible.
 
 Check both sides of 48rem and 72rem after layout changes.
 
