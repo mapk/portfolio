@@ -97,7 +97,7 @@ Defined by CSS vars in `globals.css`:
 - **< 48rem**: single column, whole page scrolls.
 - **≥ 48rem**: two columns (bio/links/reading | projects/talks), each scrolls independently inside a `100svh` viewport, solid `#1f1f23` divider, scrollbars hidden.
 - **≥ 72rem (`split` breakpoint, custom Tailwind breakpoint)**: preview panel docks beside the content (no backdrop, no close button). Below it, the panel slides over with a dimmed backdrop and an × button.
-- Story previews add `.is-story` to the panel: at `split`+ it widens over the projects column (`min(1080px, 100vw - 32rem)`, never narrower than the normal panel) so the before/after sliders have room, while the bio stays visible.
+- Story previews open at the same panel width as projects. Unlike project media (which bleeds off the right edge), story sliders/images are `w-full` inside a right gutter so they're never cropped.
 
 Check both sides of 48rem and 72rem after layout changes.
 

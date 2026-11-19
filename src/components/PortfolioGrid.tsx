@@ -547,7 +547,7 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
 
             <motion.div
               ref={panelRef}
-              className={`preview-overlay-panel${selectedStory ? " is-story" : ""} pointer-events-auto relative z-10 flex h-full w-[min(90vw,810px)] split:w-[calc(100vw-var(--main-w))] flex-col overflow-y-auto overflow-x-clip bg-zinc-950 border-l border-[#1f1f23] p-6 pt-12 split:pl-[var(--gutter)] split:pr-0`}
+              className={`preview-overlay-panel pointer-events-auto relative z-10 flex h-full w-[min(90vw,810px)] split:w-[calc(100vw-var(--main-w))] flex-col overflow-y-auto overflow-x-clip bg-zinc-950 border-l border-[#1f1f23] p-6 pt-12 split:pl-[var(--gutter)] split:pr-0`}
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
