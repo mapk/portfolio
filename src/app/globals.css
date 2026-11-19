@@ -347,6 +347,15 @@ body a > span {
   padding-inline: var(--gutter);
 }
 
+/* Leadership stories (StoryPreview) need room for the before/after sliders,
+   so when docked the panel widens over the projects column, leaving the bio
+   (and its highlighted link) in view. Caps at 1080px wide. */
+@media (min-width: 72rem) {
+  .preview-overlay-panel.is-story {
+    width: max(calc(100vw - var(--main-w)), min(1080px, 100vw - 32rem));
+  }
+}
+
 /* Stacked (single column): one left edge, whole page scrolls */
 .portfolio-grid {
   grid-template-columns: minmax(0, 1fr);
