@@ -66,6 +66,18 @@ body a > span {
   color: #a1a1aa;
 }
 
+/* Email link: label takes the link colour (white, yellow on hover); the
+   address revealed on hover/focus stays white. */
+body a > span.email-label {
+  color: inherit;
+}
+body a > span.email-address {
+  color: #fff;
+}
+.yellow-bg-active a > span.email-address {
+  color: #0a0a0b !important;
+}
+
 /* Text selection: yellow highlight, dark gray text (matches link hover accent) */
 ::selection {
   background-color: #eeff0d;

@@ -125,18 +125,20 @@ const STORIES: Story[] = [
       },
     ],
     stats: [
-      { value: "4.4\u00d7", label: "more shops using the app each month" },
+      {
+        value: "28\u00d7",
+        label: "usage increase on most recent feature this year ",
+      },
       { value: "11\u00d7", label: "more repair orders every year" },
       { value: "290+", label: "pull requests across 5+ repos" },
-      { value: "65", label: "design system components, with 40+ patterns" },
+      { value: "65", label: "design system components, 40+ patterns" },
     ],
     description:
-      "Design leadership at Shopmonkey since 2021, on a 6-person design team, working directly with two squads that each have a PM and 4–6 engineers. I created the design system behind a full re-platform of the app and built the prototyping system now used by 60+ designers, PMs, and engineers.\n\nSince 2023 I’ve led design on Express Lane, a tablet-first quick-lube flow that opened a new market for Shopmonkey: multi-location quick-lube chains, starting with a national franchise. Now I’m redesigning how shops serve fleets and enterprises. Fleets were saved as ordinary customers with one contact, and not reaching the right person was the top frustration in research with 11 customers. The redesign gives each fleet multiple contacts, so every order names a contact and messages reach the right person. Together, Express Lane and fleets are Shopmonkey’s top priority going forward.",
+      "Design leadership at Shopmonkey since 2021. I manage 3 product designers and work directly with two squads that each have a PM and 4–6 engineers. I encourage open communication, healthy conflict, and autonomy.\n\nI created the design system behind a full re-platform of the app and built the prototyping system now used by 60+ designers, PMs, and engineers.\n\nSince 2023 I’ve led design on Express Lane, a tablet-first quick-lube flow that opened a new market for Shopmonkey: multi-location quick-lube chains, starting with a national franchise. Now I’m redesigning how shops serve fleets and enterprises. Fleets were saved as ordinary customers with one contact, and not reaching the right person was the top frustration in research with 11 customers. The redesign gives each fleet multiple contacts, so every order names a contact and messages reach the right person. Together, Express Lane and fleets are Shopmonkey’s top priority going forward.",
   },
   {
     id: "shopmonkey-playground",
     title: "Shopmonkey Playground",
-    listTitle: "Prototype Playground",
     listDescription: "How Shopmonkey prototypes and tests ideas with AI",
     meta: "AI vibe coding tool for early prototypes",
     url: "https://shopmonkey-playground.vercel.app/",
@@ -146,13 +148,16 @@ const STORIES: Story[] = [
       aspect: "2880 / 1798",
     },
     stats: [
-      { value: "675+", label: "pull requests from 67 contributors" },
-      { value: "85+", label: "users tested prototypes and gave us direct feedback" },
-      { value: "2 hrs", label: "average working time between shipped prototype changes" },
+      { value: "675+", label: "pull requests from 22 contributors" },
+      {
+        value: "45+",
+        label: "users tested prototypes and gave direct feedback",
+      },
+      { value: "2 hrs", label: "avg time between prototype changes" },
       { value: "18", label: "prototypes created per week, on average" },
     ],
     description:
-      "In March 2026 I rebuilt how Shopmonkey prototypes. In about eight months it grew from a design tool into how product, engineering and research explore ideas and test with users. Even our VP of Product and CTO use it to try out ideas. Prototype names and details are masked.",
+      "In March 2026 I built Shopmonkey's prototyping system. In about eight months it grew from a design tool into how product, engineering and research explore ideas and test with users. Even our VP of Product and CTO use it to try out ideas. Prototype names and details are masked.",
   },
 ];
 
@@ -220,6 +225,7 @@ const TALKS: Talk[] = [
 ];
 
 const SOCIAL_LINKS = [
+  { label: "Email", url: "mailto:uraine@gmail.com" },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/uraine/" },
   { label: "Github", url: "https://github.com/mapk" },
   { label: "ADPList", url: "https://adplist.org/mentors/mark-uraine" },
@@ -349,14 +355,16 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                 Last Picked
               </a>
               , where I build products that help product teams build
-              products.(╯°□°)╯ ┻━┻ I&apos;m also a Sr. Manager of Product Design
-              at{" "}
-              {storyButton("shopmonkey", "Shopmonkey")}{" "}
-              where I built{" "}
-              {storyButton("shopmonkey-playground", "Shopmonkey Playground")}
-              , an AI vibe coding tool that allows us to share early prototypes
-              with customers, and makes the hand-off to development smooth and
-              seamless. I was a Design Director at{" "}
+              products.(╯°□°)╯ ┻━┻ <br />
+              <br />
+              I&apos;m also a Sr. Manager of Product Design at{" "}
+              {storyButton("shopmonkey", "Shopmonkey")} where I built{" "}
+              {storyButton("shopmonkey-playground", "Shopmonkey Playground")},
+              an AI vibe coding tool that allows us to share early prototypes
+              with users, and makes the hand-off to development smooth and
+              seamless. <br />
+              <br />
+              Previously, I was a Design Director at{" "}
               <a
                 href="https://automattic.com/"
                 target="_blank"
@@ -372,7 +380,8 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
               >
                 WordPress
               </a>
-              , and helped several startups go from 0 to 1.
+              , and communicated business goals with a global community. And
+              times prior, I&apos;ve helped several startups go from 0 to 1.
             </p>
           </div>
 
@@ -385,14 +394,32 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                   style={nextLine()}
                 >
                   <Marker>{i === SOCIAL_LINKS.length - 1 ? "└─" : "├─"}</Marker>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="external-link w-fit"
-                  >
-                    {link.label}
-                  </a>
+                  {link.url.startsWith("mailto:") ? (
+                    // Shows the label; on hover/focus swaps to the address.
+                    // GlitchScramble scrambles the link's visible text on
+                    // enter, so the address decodes in.
+                    <a
+                      href={link.url}
+                      aria-label={`${link.label} ${link.url.slice(7)}`}
+                      className="group w-fit"
+                    >
+                      <span className="email-label group-hover:hidden group-focus-visible:hidden">
+                        {link.label}
+                      </span>
+                      <span className="email-address hidden group-hover:inline group-focus-visible:inline">
+                        {link.url.slice(7)}
+                      </span>
+                    </a>
+                  ) : (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="external-link w-fit"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -408,11 +435,7 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
               </h2>
               <ul className="space-y-[var(--baseline)] text-sm">
                 {readingSnippets.map((snippet) => (
-                  <li
-                    key={snippet.id}
-                    className="glitch-in"
-                    style={nextLine()}
-                  >
+                  <li key={snippet.id} className="glitch-in" style={nextLine()}>
                     <blockquote className="text-zinc-400">
                       &ldquo;{snippet.highlight}&rdquo;
                     </blockquote>
