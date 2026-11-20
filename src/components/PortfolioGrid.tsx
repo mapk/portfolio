@@ -125,7 +125,10 @@ const STORIES: Story[] = [
       },
     ],
     stats: [
-      { value: "4.4\u00d7", label: "more shops using the app each month" },
+      {
+        value: "28\u00d7",
+        label: "usage increase on most recent feature this year ",
+      },
       { value: "11\u00d7", label: "more repair orders every year" },
       { value: "290+", label: "pull requests across 5+ repos" },
       { value: "65", label: "design system components, 40+ patterns" },
@@ -136,7 +139,6 @@ const STORIES: Story[] = [
   {
     id: "shopmonkey-playground",
     title: "Shopmonkey Playground",
-    listTitle: "Prototype Playground",
     listDescription: "How Shopmonkey prototypes and tests ideas with AI",
     meta: "AI vibe coding tool for early prototypes",
     url: "https://shopmonkey-playground.vercel.app/",
@@ -146,10 +148,10 @@ const STORIES: Story[] = [
       aspect: "2880 / 1798",
     },
     stats: [
-      { value: "675+", label: "pull requests from 67 contributors" },
+      { value: "675+", label: "pull requests from 22 contributors" },
       {
         value: "45+",
-        label: "users tested prototypes and gave us direct feedback",
+        label: "users tested prototypes and gave direct feedback",
       },
       { value: "2 hrs", label: "avg time between prototype changes" },
       { value: "18", label: "prototypes created per week, on average" },
@@ -223,6 +225,7 @@ const TALKS: Talk[] = [
 ];
 
 const SOCIAL_LINKS = [
+  { label: "Email", url: "mailto:uraine@gmail.com" },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/uraine/" },
   { label: "Github", url: "https://github.com/mapk" },
   { label: "ADPList", url: "https://adplist.org/mentors/mark-uraine" },
@@ -377,8 +380,8 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
               >
                 WordPress
               </a>
-              , and communicated with a global community. And times prior,
-              I&apos;ve helped several startups go from 0 to 1.
+              , and communicated business goals with a global community. And
+              times prior, I&apos;ve helped several startups go from 0 to 1.
             </p>
           </div>
 
@@ -391,14 +394,32 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                   style={nextLine()}
                 >
                   <Marker>{i === SOCIAL_LINKS.length - 1 ? "└─" : "├─"}</Marker>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="external-link w-fit"
-                  >
-                    {link.label}
-                  </a>
+                  {link.url.startsWith("mailto:") ? (
+                    // Shows the label; on hover/focus swaps to the address.
+                    // GlitchScramble scrambles the link's visible text on
+                    // enter, so the address decodes in.
+                    <a
+                      href={link.url}
+                      aria-label={`${link.label} ${link.url.slice(7)}`}
+                      className="group w-fit"
+                    >
+                      <span className="email-label group-hover:hidden group-focus-visible:hidden">
+                        {link.label}
+                      </span>
+                      <span className="email-address hidden group-hover:inline group-focus-visible:inline">
+                        {link.url.slice(7)}
+                      </span>
+                    </a>
+                  ) : (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="external-link w-fit"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
