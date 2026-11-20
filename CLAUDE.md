@@ -6,7 +6,7 @@ Repo: `github.com/mapk/portfolio`. Deployed on Vercel (Vercel Analytics is wired
 
 ## Next steps
 
-When asked about next steps, the to-do list, or what to work on for this portfolio, read and share `NEXT-STEPS.md`. It holds the current prioritized plan from the Design Director / Head of Design hiring review. Show the checklist with each item's status, and keep it updated: tick items off (`- [x]`) as they're completed.
+When asked about next steps, what's next, the to-do list, or what to work on for this portfolio, read `NEXT-STEPS.md` and walk through its **What's next (open items)** section: each open item with its priority, what it needs from Mark, and its done-when check. Use the round sections below it for details and file locations. Don't re-raise anything listed under deliberate choices. Keep the file updated: when an item is finished, tick it, move it to **Done** with its PR number, and tick it in its round section. Note: `NEXT-STEPS.md` is gitignored, so it lives only in this local checkout.
 
 Several items need facts only Mark can supply (team sizes, outcomes, talk recordings, what's public). Ask rather than invent leadership claims, metrics, or talk descriptions.
 
