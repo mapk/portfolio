@@ -5,10 +5,13 @@
 
 const CURIUS_USER_ID = 6861;
 const REVALIDATE_SECONDS = 60 * 60;
-const MAX_SNIPPETS = 2;
+// The page shows a random few from this pool on each load (PortfolioGrid).
+const POOL_SIZE = 20;
 
 export type ReadingSnippet = {
   id: number;
+  // Same value for every highlight from one article; used to keep picks distinct.
+  articleKey: string;
   title: string;
   author: string | null;
   url: string;
@@ -134,30 +137,46 @@ export const getRecentHighlights = async (): Promise<ReadingSnippet[]> => {
     if (!res.ok) return [];
     const { userSaved } = (await res.json()) as { userSaved?: CuriusLink[] };
 
-    // One snippet per article: that article's most recent highlight of mine.
+    // Every highlight of mine, newest first. Each article counts once even if
+    // it was saved twice with different params.
     const seen = new Set<string>();
-    const picks: { link: CuriusLink; highlight: CuriusHighlight }[] = [];
+    const picks: { link: CuriusLink; key: string; highlight: CuriusHighlight }[] =
+      [];
     for (const link of userSaved ?? []) {
       const key = urlKey(cleanUrl(link.link));
       if (seen.has(key)) continue;
-      const latest = (link.highlights ?? [])
-        .filter((h) => h.userId === CURIUS_USER_ID && h.highlight?.trim())
-        .sort((a, b) => b.createdDate.localeCompare(a.createdDate))[0];
-      if (!latest) continue;
+      const mine = (link.highlights ?? []).filter(
+        (h) => h.userId === CURIUS_USER_ID && h.highlight?.trim(),
+      );
+      if (mine.length === 0) continue;
       seen.add(key);
-      picks.push({ link, highlight: latest });
+      for (const highlight of mine) picks.push({ link, key, highlight });
     }
 
     picks.sort((a, b) =>
       b.highlight.createdDate.localeCompare(a.highlight.createdDate),
     );
+    const pool = picks.slice(0, POOL_SIZE);
+
+    // One author lookup per article, however many highlights it has.
+    const authors = new Map<string, Promise<string | null>>();
+    const authorFor = (url: string) => {
+      if (!authors.has(url)) {
+        authors.set(
+          url,
+          fetchAuthor(url).then((author) => author ?? hostname(url)),
+        );
+      }
+      return authors.get(url)!;
+    };
 
     return Promise.all(
-      picks.slice(0, MAX_SNIPPETS).map(async ({ link, highlight }) => {
+      pool.map(async ({ link, key, highlight }) => {
         const url = cleanUrl(link.link);
-        const author = (await fetchAuthor(url)) ?? hostname(url);
+        const author = await authorFor(url);
         return {
           id: highlight.id,
+          articleKey: key,
           title: cleanTitle(link.title, author),
           author,
           url,

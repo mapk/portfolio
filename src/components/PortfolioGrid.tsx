@@ -238,6 +238,26 @@ const Marker = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
+const SHOWN_SNIPPETS = 2;
+
+/** Random picks from the pool, each from a different article. */
+const pickSnippets = (pool: ReadingSnippet[], count: number) => {
+  const shuffled = [...pool];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  const articles = new Set<string>();
+  const picks: ReadingSnippet[] = [];
+  for (const snippet of shuffled) {
+    if (picks.length === count) break;
+    if (articles.has(snippet.articleKey)) continue;
+    articles.add(snippet.articleKey);
+    picks.push(snippet);
+  }
+  return picks;
+};
+
 type PortfolioGridProps = {
   readingSnippets?: ReadingSnippet[];
 };
@@ -254,6 +274,18 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
   }, []);
 
   const panelRef = useRef<HTMLDivElement>(null);
+
+  // Highlighted Reading: the server sends a pool and each page load shows a
+  // random few. Picked after mount so server and client HTML match. The slot
+  // count depends only on the pool, so the load-in stagger is stable.
+  const readingSlots = Math.min(
+    SHOWN_SNIPPETS,
+    new Set(readingSnippets.map((s) => s.articleKey)).size,
+  );
+  const [shownSnippets, setShownSnippets] = useState<ReadingSnippet[]>([]);
+  useEffect(() => {
+    setShownSnippets(pickSnippets(readingSnippets, readingSlots));
+  }, [readingSnippets, readingSlots]);
 
   const handleOverlayClose = useCallback(() => {
     setSelectedId(null);
@@ -357,14 +389,14 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
               , where I build products that help product teams build
               products.(╯°□°)╯ ┻━┻ <br />
               <br />
-              I&apos;m also a Sr. Manager of Product Design at{" "}
-              {storyButton("shopmonkey", "Shopmonkey")} where I built{" "}
+              Sr. Manager of Product Design at{" "}
+              {storyButton("shopmonkey", "Shopmonkey")} where I lead the product
+              design team and multiple squads. I built{" "}
               {storyButton("shopmonkey-playground", "Shopmonkey Playground")},
-              an AI vibe coding tool that allows us to share early prototypes
-              with users, and makes the hand-off to development smooth and
-              seamless. <br />
+              an AI harness for rapid prototyping and testing ideas with users.
               <br />
-              Previously, I was a Design Director at{" "}
+              <br />
+              Previously, Design Director at{" "}
               <a
                 href="https://automattic.com/"
                 target="_blank"
@@ -380,8 +412,8 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
               >
                 WordPress
               </a>
-              , and communicated business goals with a global community. And
-              times prior, I&apos;ve helped several startups go from 0 to 1.
+              , and collaborated with a global community to integrate the block
+              editor.
             </p>
           </div>
 
@@ -434,34 +466,41 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
                 Highlighted Reading
               </h2>
               <ul className="space-y-[var(--baseline)] text-sm">
-                {readingSnippets.map((snippet) => (
-                  <li key={snippet.id} className="glitch-in" style={nextLine()}>
-                    <blockquote className="text-zinc-400">
-                      &ldquo;{snippet.highlight}&rdquo;
-                    </blockquote>
-                    <div className="list-row">
-                      <Marker>└─</Marker>
-                      <div className="min-w-0">
-                        <a
-                          href={snippet.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="external-link"
-                        >
-                          {snippet.title}
-                        </a>
-                        {snippet.author && (
-                          <>
-                            <br />
-                            <span className="text-zinc-500">
-                              {snippet.author}
-                            </span>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                ))}
+                {Array.from({ length: readingSlots }, (_, i) => {
+                  const snippet = shownSnippets[i];
+                  return (
+                    <li key={i} className="glitch-in" style={nextLine()}>
+                      {snippet && (
+                        <>
+                          <blockquote className="text-zinc-400">
+                            &ldquo;{snippet.highlight}&rdquo;
+                          </blockquote>
+                          <div className="list-row">
+                            <Marker>└─</Marker>
+                            <div className="min-w-0">
+                              <a
+                                href={snippet.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="external-link"
+                              >
+                                {snippet.title}
+                              </a>
+                              {snippet.author && (
+                                <>
+                                  <br />
+                                  <span className="text-zinc-500">
+                                    {snippet.author}
+                                  </span>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           )}
@@ -473,24 +512,6 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
           style={nextLine()}
         >
           <section>
-            <h2
-              className="glitch-in mb-[var(--baseline)] text-sm uppercase"
-              style={nextLine()}
-            >
-              Design Leadership
-            </h2>
-            <ul className="space-y-[var(--baseline)] text-sm">
-              {STORIES.map((story) =>
-                listItem(
-                  story.id,
-                  story.listTitle ?? story.title,
-                  story.listDescription,
-                ),
-              )}
-            </ul>
-          </section>
-
-          <section className="mt-[calc(var(--baseline)*2)]">
             <h2
               className="glitch-in mb-[var(--baseline)] text-sm uppercase"
               style={nextLine()}
