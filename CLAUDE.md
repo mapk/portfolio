@@ -34,7 +34,7 @@ Package manager is **npm** (`package-lock.json`). Use `npm install` / `npm ci`. 
 
 ```
 src/app/layout.tsx        Fonts (next/font/local + Roboto Mono fallback), metadata, CRT overlay,
-                          GlitchScramble, Analytics, Reactions embed script
+                          GlitchScramble, Analytics
 src/app/page.tsx          Server component. Fetches Curius highlights (revalidate = 3600), renders PortfolioGrid
 src/app/not-found.tsx     Terminal-style 404 ("bash: cd: /path: No such file or directory")
 src/app/globals.css       Type scale, baseline grid, layout vars, terminal styles, all keyframes
@@ -101,7 +101,7 @@ Defined by CSS vars in `globals.css`:
 
 Check both sides of 48rem and 72rem after layout changes.
 
-**Reactions widget**: the `getreactions.app/embed.js` script in `layout.tsx` injects a fixed 80×80 iframe in a corner (bottom-right; set in the Reactions dashboard, not here). It's hidden entirely below 48rem (single-column layout) via a `display: none !important` rule in `globals.css`. In the two-column layout each scroll column ends with 5 baselines of bottom padding so the last lines can scroll clear of it. Keep that padding if you change column spacing.
+In the two-column layout each scroll column ends with 5 baselines of bottom padding.
 
 ## Curius "Highlighted Reading"
 
