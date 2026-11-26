@@ -96,11 +96,11 @@ const StoryPreview = ({ story }: { story: Story }) => (
     )}
 
     {story.stats && (
-      <ul className="grid w-full max-w-[1280px] grid-cols-1 gap-x-3 gap-y-[var(--baseline)] min-[30rem]:grid-cols-2 min-[60rem]:grid-cols-4">
+      <ul className="grid w-full max-w-[1280px] grid-cols-1 gap-[var(--baseline)] min-[30rem]:grid-cols-2 min-[60rem]:grid-cols-4">
         {story.stats.map((s, i) => (
           <li
             key={s.value}
-            className="glitch-in flex flex-col rounded-[4px] border border-[#1f1f23] px-3 py-[calc(var(--baseline)-1px)]"
+            className="glitch-in flex flex-col rounded-[4px] border border-[#1f1f23] bg-[#111113] px-3 py-[calc(var(--baseline)-1px)]"
             style={delay(0.4 + i * 0.05)}
           >
             <div className="text-2xl leading-[calc(var(--baseline)*2)] text-white">

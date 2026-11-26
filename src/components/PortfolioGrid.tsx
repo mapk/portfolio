@@ -134,7 +134,7 @@ const STORIES: Story[] = [
       { value: "65", label: "design system components, 40+ patterns" },
     ],
     description:
-      "Design leadership at Shopmonkey since 2021. I manage 3 product designers and work directly with two squads that each have a PM and 4–6 engineers. I encourage open communication, healthy conflict, and autonomy.\n\nI created the design system behind a full re-platform of the app and built the prototyping system now used by 60+ designers, PMs, and engineers.\n\nSince 2023 I’ve led design on Express Lane, a tablet-first quick-lube flow that opened a new market for Shopmonkey: multi-location quick-lube chains, starting with a national franchise. Now I’m redesigning how shops serve fleets and enterprises. Fleets were saved as ordinary customers with one contact, and not reaching the right person was the top frustration in research with 11 customers. The redesign gives each fleet multiple contacts, so every order names a contact and messages reach the right person. Together, Express Lane and fleets are Shopmonkey’s top priority going forward.",
+      "When joining Shopmonkey in 2021, I began building the new design system to enforce coherence and usability. This improved efficiency of our designers in Figma and gave us a foundation for a full re-platform of the app. Since then I've updated the design system for AI agents while keeping it tightly synced with our codebase.\n\nI directly impacted the culture at Shopmonkey by encouraging open communication, healthy conflict, and enabling designers to submit PRs.\n\nAs the company focused on enterprise and the quick-lube market, I led design on Express Lane, a tablet-first UX flow that introduced a POS-like experience for building orders. Today, I’m redesigning how shops serve fleets and keep track of their vehicles.",
   },
   {
     id: "shopmonkey-playground",
@@ -157,7 +157,7 @@ const STORIES: Story[] = [
       { value: "18", label: "prototypes created per week, on average" },
     ],
     description:
-      "In March 2026 I built Shopmonkey's prototyping system. In about eight months it grew from a design tool into how product, engineering and research explore ideas and test with users. Even our VP of Product and CTO use it to try out ideas. Prototype names and details are masked.",
+      "In March 2026 I built Shopmonkey's prototyping system and AI harness. In about eight months it grew from a design tool into how product, engineering and research explore ideas and test with users. Even our VP of Product and CTO use it to try out ideas.\n\nUsers create a new prototype by invoking a skill that requests a PRD and offers a template starting point. The skill pulls the latest component updates from our frontend and lists the prototype in a library. Each prototype can hold several variations and states to help convey the story. Another skill publishes the prototype and hosts it live with its own access code for user testing.\n\nAutomated tests check each PR and merge it without human intervention. All prototypes run through a skill that assumes a user persona that provides quality feedback before we test with actual humans.",
   },
 ];
 
