@@ -83,11 +83,6 @@ export default function RootLayout({
         <div className="crt" aria-hidden="true" />
         <GlitchScramble />
         <Analytics />
-        <script
-          src="https://getreactions.app/embed.js"
-          data-org-token="97d2118dc505478ab3333218b6f4d764"
-          defer
-        ></script>
       </body>
     </html>
   );
