@@ -357,14 +357,14 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
               , where I build products that help product teams build
               products.(╯°□°)╯ ┻━┻ <br />
               <br />
-              I&apos;m also a Sr. Manager of Product Design at{" "}
-              {storyButton("shopmonkey", "Shopmonkey")} where I built{" "}
+              Sr. Manager of Product Design at{" "}
+              {storyButton("shopmonkey", "Shopmonkey")} where I lead the product
+              design team and multiple squads. I built{" "}
               {storyButton("shopmonkey-playground", "Shopmonkey Playground")},
-              an AI vibe coding tool that allows us to share early prototypes
-              with users, and makes the hand-off to development smooth and
-              seamless. <br />
+              an AI harness for rapid prototyping and testing ideas with users.
               <br />
-              Previously, I was a Design Director at{" "}
+              <br />
+              Previously, Design Director at{" "}
               <a
                 href="https://automattic.com/"
                 target="_blank"
@@ -380,8 +380,8 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
               >
                 WordPress
               </a>
-              , and communicated business goals with a global community. And
-              times prior, I&apos;ve helped several startups go from 0 to 1.
+              , and collaborated with a global community to integrate the block
+              editor.
             </p>
           </div>
 
@@ -473,24 +473,6 @@ const PortfolioGrid = ({ readingSnippets = [] }: PortfolioGridProps) => {
           style={nextLine()}
         >
           <section>
-            <h2
-              className="glitch-in mb-[var(--baseline)] text-sm uppercase"
-              style={nextLine()}
-            >
-              Design Leadership
-            </h2>
-            <ul className="space-y-[var(--baseline)] text-sm">
-              {STORIES.map((story) =>
-                listItem(
-                  story.id,
-                  story.listTitle ?? story.title,
-                  story.listDescription,
-                ),
-              )}
-            </ul>
-          </section>
-
-          <section className="mt-[calc(var(--baseline)*2)]">
             <h2
               className="glitch-in mb-[var(--baseline)] text-sm uppercase"
               style={nextLine()}
